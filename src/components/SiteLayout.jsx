@@ -74,6 +74,15 @@ export default function SiteLayout({ children }) {
     ))
   }
 
+  function renderConceptItems(items, className) {
+    return items.map((item) => (
+      <NavLink key={item.path} to={item.path} className={className}>
+        <span className={`${className}__label`}>{item.title}</span>
+        <span className={`${className}__summary`}>{item.summary}</span>
+      </NavLink>
+    ))
+  }
+
   return (
     <div className="page-shell">
       <div className="page-background" aria-hidden="true" />
@@ -98,7 +107,7 @@ export default function SiteLayout({ children }) {
                 alt="Civil Citizens For Canada Party logo"
                 className="site-brand__logo"
               />
-              <span className="site-brand__text">Civil Citizens For Canada Party</span>
+              <span className="site-brand__text">CCC</span>
             </Link>
           </div>
           <div className="site-header__desktop">
@@ -136,18 +145,8 @@ export default function SiteLayout({ children }) {
                             <span className="site-dropdown__overview-label">{section.overview.label}</span>
                             <span className="site-dropdown__overview-summary">{section.overview.summary}</span>
                           </NavLink>
-                          <div className="site-dropdown__mega-grid">
-                            {section.groups.map((group) => (
-                              <div key={group.title} className="site-dropdown__group">
-                                <NavLink to={group.path} className="site-dropdown__group-title">
-                                  {group.title}
-                                </NavLink>
-                                <p className="site-dropdown__group-summary">{group.summary}</p>
-                                <div className="site-dropdown__group-links">
-                                  {renderMenuItems(group.items, 'site-dropdown__link')}
-                                </div>
-                              </div>
-                            ))}
+                          <div className="site-dropdown__concept-grid">
+                            {renderConceptItems(section.groups, 'site-dropdown__concept')}
                           </div>
                         </>
                       ) : (
@@ -180,18 +179,8 @@ export default function SiteLayout({ children }) {
                       <span className="mobile-nav__overview-label">{section.overview.label}</span>
                       <span className="mobile-nav__overview-summary">{section.overview.summary}</span>
                     </NavLink>
-                    <div className="mobile-nav__group-list">
-                      {section.groups.map((group) => (
-                        <div key={group.title} className="mobile-nav__group">
-                          <NavLink to={group.path} className="mobile-nav__group-title">
-                            {group.title}
-                          </NavLink>
-                          <p className="mobile-nav__group-summary">{group.summary}</p>
-                          <div className="mobile-nav__links">
-                            {renderMenuItems(group.items, 'mobile-nav__link')}
-                          </div>
-                        </div>
-                      ))}
+                    <div className="mobile-nav__concept-grid">
+                      {renderConceptItems(section.groups, 'mobile-nav__concept')}
                     </div>
                   </>
                 ) : (

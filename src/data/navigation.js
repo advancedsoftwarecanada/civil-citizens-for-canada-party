@@ -25,45 +25,45 @@ const homeItems = [
 
 const aboutItems = [
   {
-    label: 'About CCC Overview',
+    label: 'About Overview',
     path: '/about-ccc',
     summary: 'A high-level introduction to the movement, its mission, and why it exists.',
-    parentLabel: 'About CCC',
+    parentLabel: 'About',
     parentPath: '/',
   },
   {
     label: 'What is Civil Citizens Canada',
     path: '/about/what-is-civil-citizens-canada',
     summary: 'Explain what CCC is, who it serves, and the role it intends to play in Canada.',
-    parentLabel: 'About CCC',
+    parentLabel: 'About',
     parentPath: '/about-ccc',
   },
   {
     label: 'Founding Principles',
     path: '/about/founding-principles',
     summary: 'Outline the core principles that guide the party and its policy approach.',
-    parentLabel: 'About CCC',
+    parentLabel: 'About',
     parentPath: '/about-ccc',
   },
   {
     label: 'Why CCC Exists',
     path: '/about/why-ccc-exists',
     summary: 'Set out the political and civic case for why CCC is being built now.',
-    parentLabel: 'About CCC',
+    parentLabel: 'About',
     parentPath: '/about-ccc',
   },
   {
     label: 'Leadership',
     path: '/about/leadership',
     summary: 'Introduce the leadership team once that structure is ready to publish.',
-    parentLabel: 'About CCC',
+    parentLabel: 'About',
     parentPath: '/about-ccc',
   },
   {
     label: 'Structure',
     path: '/about/structure',
     summary: 'Describe the organizational path from EDA to provincial to national structure.',
-    parentLabel: 'About CCC',
+    parentLabel: 'About',
     parentPath: '/about-ccc',
   },
 ]
@@ -470,14 +470,8 @@ const supportItems = [
 
 export const primaryNavigation = [
   {
-    id: 'home',
-    label: 'Home',
-    type: 'menu',
-    items: homeItems,
-  },
-  {
     id: 'about',
-    label: 'About CCC',
+    label: 'About',
     type: 'menu',
     items: aboutItems,
   },
@@ -549,7 +543,7 @@ function collectNavigationPages(sections) {
   return pages
 }
 
-export const navigationPages = collectNavigationPages(primaryNavigation)
+export const navigationPages = [...homeItems, ...collectNavigationPages(primaryNavigation)]
 
 export const navigationLookup = navigationPages.reduce((lookup, page) => {
   lookup[page.path] = page
