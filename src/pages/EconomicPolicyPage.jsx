@@ -21,12 +21,17 @@ export default function EconomicPolicyPage() {
         </section>
 
         <aside className="policy-aside">
-          <img
-            src="/assets/img/Civil-Citizens-For-Canada-Party.png"
-            alt="Civil Citizens For Canada Party logo"
-            className="policy-aside__logo"
-          />
-          <p className="policy-aside__tag">Work. Growth. Transparency.</p>
+          <p className="policy-aside__eyebrow">CCC Principles</p>
+          <h2 className="policy-aside__title">Work. Growth. Transparency.</h2>
+          <p className="policy-aside__copy">
+            A cleaner tax system should be understandable to ordinary citizens, reliable for
+            employers, and strong enough to support Canada&apos;s long-term future.
+          </p>
+          <div className="policy-aside__list" aria-label="Core principles">
+            <span>Reward Work</span>
+            <span>Support Families</span>
+            <span>Build In Canada</span>
+          </div>
         </aside>
       </div>
 
@@ -37,18 +42,18 @@ export default function EconomicPolicyPage() {
             <h2 className="section-title">Economic Policy Priorities</h2>
           </div>
           <p className="section-copy">
-            Nine priorities designed to make the tax system more understandable, more productive,
+            Ten priorities designed to make the tax system more understandable, more productive,
             and more aligned with the long-term interests of Canadian citizens.
           </p>
         </div>
 
         <div className="policy-grid">
           {economicPolicyPoints.map((point) => (
-            <article key={point.number} className="policy-card">
+            <Link key={point.slug} to={`/economic-policy/${point.slug}`} className="policy-card">
               <p className="policy-card__number">{point.number}</p>
               <h3 className="policy-card__title">{point.title}</h3>
               <p className="policy-card__description">{point.description}</p>
-            </article>
+            </Link>
           ))}
         </div>
       </section>

@@ -8,7 +8,6 @@ export default function HomePage() {
         alt="Civil Citizens For Canada Party logo"
         className="hero-logo"
       />
-      <p className="eyebrow">Civil Citizens Canada</p>
       <h1 className="hero-title">Building a Fairer Canada</h1>
       <p className="hero-copy">
         Civil Citizens For Canada Party is laying out a platform focused on work, growth,
