@@ -7,9 +7,9 @@ const homeItems = [
     parentPath: '/',
   },
   {
-    label: 'Join Movement',
-    path: '/join-movement',
-    summary: 'A direct call to action for Canadians who want to help build CCC.',
+    label: 'Become a Civil Citizen',
+    path: '/become-a-civil-citizen',
+    summary: 'A direct call to action for Canadians who want to actively help build CCC.',
     parentLabel: 'Home',
     parentPath: '/',
     featured: true,
@@ -30,6 +30,7 @@ const aboutItems = [
     summary: 'A high-level introduction to the movement, its mission, and why it exists.',
     parentLabel: 'About',
     parentPath: '/',
+    hideInNav: true,
   },
   {
     label: 'What is Civil Citizens Canada',
@@ -55,7 +56,7 @@ const aboutItems = [
   {
     label: 'Leadership',
     path: '/about/leadership',
-    summary: 'Introduce the leadership team once that structure is ready to publish.',
+    summary: 'Meet the current public leadership profile and founding direction for CCC.',
     parentLabel: 'About',
     parentPath: '/about-ccc',
   },
@@ -309,48 +310,56 @@ const platformGroups = [
   },
 ]
 
-const systemItems = [
+export const systemItems = [
   {
-    label: 'The System Overview',
-    path: '/civil-system',
+    label: 'The Civil App Overview',
+    path: '/the-civil-app',
     summary: 'Introduce Civil as the operating layer that keeps citizens continuously involved.',
-    parentLabel: 'The System (Civil)',
+    parentLabel: 'The Civil App',
     parentPath: '/',
+    hideInNav: true,
   },
   {
     label: 'What is Civil',
-    path: '/civil-system/what-is-civil',
+    path: '/the-civil-app/what-is-civil',
     summary: 'Explain the core concept behind the Civil participation system.',
-    parentLabel: 'The System (Civil)',
-    parentPath: '/civil-system',
+    parentLabel: 'The Civil App',
+    parentPath: '/the-civil-app',
   },
   {
     label: 'How Citizens Participate',
-    path: '/civil-system/how-citizens-participate',
+    path: '/the-civil-app/how-citizens-participate',
     summary: 'Describe how people contribute input and decision weight inside the system.',
-    parentLabel: 'The System (Civil)',
-    parentPath: '/civil-system',
+    parentLabel: 'The Civil App',
+    parentPath: '/the-civil-app',
+  },
+  {
+    label: 'Chambers of Citizens',
+    path: '/the-civil-app/chambers-of-citizens',
+    summary: 'Explain how local Electoral District chambers organize participation and coordination.',
+    parentLabel: 'The Civil App',
+    parentPath: '/the-civil-app',
   },
   {
     label: 'Economic Network',
-    path: '/civil-system/economic-network',
+    path: '/the-civil-app/economic-network',
     summary: 'Show how economic activity and incentives connect into Civil.',
-    parentLabel: 'The System (Civil)',
-    parentPath: '/civil-system',
+    parentLabel: 'The Civil App',
+    parentPath: '/the-civil-app',
   },
   {
     label: 'Governance Layer',
-    path: '/civil-system/governance-layer',
+    path: '/the-civil-app/governance-layer',
     summary: 'Detail the governance mechanics that sit on top of citizen participation.',
-    parentLabel: 'The System (Civil)',
-    parentPath: '/civil-system',
+    parentLabel: 'The Civil App',
+    parentPath: '/the-civil-app',
   },
   {
     label: 'Civil Wallet',
-    path: '/civil-system/civil-wallet',
+    path: '/the-civil-app/civil-wallet',
     summary: 'A future-facing concept for identity, participation, and value exchange tools.',
-    parentLabel: 'The System (Civil)',
-    parentPath: '/civil-system',
+    parentLabel: 'The Civil App',
+    parentPath: '/the-civil-app',
   },
 ]
 
@@ -361,6 +370,7 @@ export const joinMovementItems = [
     summary: 'See the local, district, and volunteer pathways into the movement.',
     parentLabel: 'Join Movement',
     parentPath: '/',
+    hideInNav: true,
   },
   {
     label: 'Find Your Electoral District (EDA)',
@@ -406,6 +416,7 @@ const newsItems = [
     summary: 'A central stream for campaign announcements, releases, and commentary.',
     parentLabel: 'News & Updates',
     parentPath: '/',
+    hideInNav: true,
   },
   {
     label: 'Announcements',
@@ -441,9 +452,10 @@ const supportItems = [
   {
     label: 'Support CCC Overview',
     path: '/support-ccc',
-    summary: 'See the ways supporters can fund, join, or partner with the movement.',
+    summary: 'See the ways supporters can fund or join the movement.',
     parentLabel: 'Support CCC',
     parentPath: '/',
+    hideInNav: true,
   },
   {
     label: 'Donate',
@@ -454,15 +466,8 @@ const supportItems = [
   },
   {
     label: 'Become a Member',
-    path: '/support-ccc/become-a-member',
-    summary: 'A future membership path for supporters who want to formalize participation.',
-    parentLabel: 'Support CCC',
-    parentPath: '/support-ccc',
-  },
-  {
-    label: 'Partner with CCC',
-    path: '/support-ccc/partner-with-ccc',
-    summary: 'A placeholder for aligned organizations, builders, and contributors.',
+    path: '/become-a-civil-citizen',
+    summary: 'Become a Civil Citizen through the Civil app and start formal participation.',
     parentLabel: 'Support CCC',
     parentPath: '/support-ccc',
   },
@@ -479,6 +484,7 @@ export const primaryNavigation = [
     id: 'platform',
     label: 'Platform',
     type: 'mega',
+    hideOverviewInNav: true,
     overview: {
       label: 'Platform Overview',
       path: '/platform',
@@ -490,14 +496,16 @@ export const primaryNavigation = [
   },
   {
     id: 'civil',
-    label: 'The System',
-    type: 'menu',
+    label: 'The Civil App',
+    type: 'direct',
+    path: '/the-civil-app',
     items: systemItems,
   },
   {
     id: 'news',
     label: 'News & Updates',
-    type: 'menu',
+    type: 'direct',
+    path: '/news-updates',
     items: newsItems,
   },
   {

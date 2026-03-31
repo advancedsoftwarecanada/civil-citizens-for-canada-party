@@ -112,24 +112,37 @@ export default function HomePage() {
 
       <section className="home-feature home-feature--stack">
         <div className="home-feature__header">
-          <h2 className="section-title">Shift From Complaint To System Design</h2>
+          <h2 className="section-title">Shift From Reaction To Construction</h2>
         </div>
         <div className="home-compare">
           <article className="home-compare__card home-compare__card--muted">
             <span className="home-compare__tag">Instead Of</span>
-            <p className="home-compare__quote">&ldquo;you could do better than politicians&rdquo;</p>
+            <p className="home-compare__quote">
+              &ldquo;Damn politicians don&apos;t do anything&rdquo;
+              <br />
+              &ldquo;This system is broken&rdquo;
+              <br />
+              &ldquo;It&apos;s not fair&rdquo;
+              <br />
+              &ldquo;Burn it all down&rdquo;
+            </p>
           </article>
           <article className="home-compare__card home-compare__card--accent">
             <span className="home-compare__tag">Say</span>
             <p className="home-compare__quote">
-              Canada does not lack intelligence, talent, or ideas. What it lacks is a system
-              that allows citizens to participate meaningfully.
+              &ldquo;I&apos;m going to be part of the solution&rdquo;
+              <br />
+              &ldquo;We&apos;re going to build something better&rdquo;
+              <br />
+              &ldquo;If the system doesn&apos;t work, we redesign it&rdquo;
+              <br />
+              &ldquo;We don&apos;t wait, we build&rdquo;
             </p>
           </article>
         </div>
         <div className="home-micro-points" aria-label="Message framing">
-          <span>You are not attacking.</span>
-          <span>You are solving.</span>
+          <span>This is anger without direction.</span>
+          <span>This is power with direction.</span>
         </div>
       </section>
 
@@ -144,8 +157,8 @@ export default function HomePage() {
             Democracy should not be something you visit every four years. It should be something
             you live in every day.
           </blockquote>
-          <Link to="/join-movement" className="button button--primary home-statement__cta">
-            Join Movement
+          <Link to="/become-a-civil-citizen" className="button button--primary home-statement__cta">
+            Become a Civil Citizen
           </Link>
         </div>
       </section>

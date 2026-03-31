@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { joinMovementItems, primaryNavigation } from '../data/navigation'
+import { primaryNavigation } from '../data/navigation'
 import SiteFooter from './SiteFooter'
 
 export default function SiteLayout({ children }) {
@@ -12,6 +12,10 @@ export default function SiteLayout({ children }) {
   useEffect(() => {
     setIsMenuOpen(false)
     setOpenSectionId(null)
+  }, [location.pathname])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [location.pathname])
 
   useEffect(() => {
@@ -38,6 +42,10 @@ export default function SiteLayout({ children }) {
   }, [])
 
   function isSectionActive(section) {
+    if (section.path && pathMatches(location.pathname, section.path)) {
+      return true
+    }
+
     if (section.overview && pathMatches(location.pathname, section.overview.path)) {
       return true
     }
@@ -62,7 +70,7 @@ export default function SiteLayout({ children }) {
   }
 
   function renderMenuItems(items, className) {
-    return items.map((item) => (
+    return items.filter((item) => !item.hideInNav).map((item) => (
       <NavLink
         key={item.path}
         to={item.path}
@@ -116,6 +124,19 @@ export default function SiteLayout({ children }) {
                 const isOpen = openSectionId === section.id
                 const isActive = isSectionActive(section)
 
+                if (section.type === 'direct') {
+                  return (
+                    <div
+                      key={section.id}
+                      className={`site-nav__item${isActive ? ' is-active' : ''}`}
+                    >
+                      <NavLink to={section.path} className="site-nav__trigger site-nav__trigger--link">
+                        <span>{section.label}</span>
+                      </NavLink>
+                    </div>
+                  )
+                }
+
                 return (
                   <div
                     key={section.id}
@@ -139,10 +160,6 @@ export default function SiteLayout({ children }) {
                     >
                       {section.type === 'mega' ? (
                         <>
-                          <NavLink to={section.overview.path} className="site-dropdown__overview">
-                            <span className="site-dropdown__overview-label">{section.overview.label}</span>
-                            <span className="site-dropdown__overview-summary">{section.overview.summary}</span>
-                          </NavLink>
                           <div className="site-dropdown__concept-grid">
                             {renderConceptItems(section.groups, 'site-dropdown__concept')}
                           </div>
@@ -157,26 +174,10 @@ export default function SiteLayout({ children }) {
                 )
               })}
             </nav>
-            <div className={`site-header__cta-wrap${openSectionId === 'join-movement' ? ' is-open' : ''}`}>
-              <button
-                type="button"
-                className="site-header__cta"
-                aria-expanded={openSectionId === 'join-movement'}
-                aria-controls="nav-panel-join-movement"
-                onClick={() =>
-                  setOpenSectionId((current) => (current === 'join-movement' ? null : 'join-movement'))
-                }
-              >
-                <span>Join Movement</span>
-              </button>
-              <div
-                id="nav-panel-join-movement"
-                className="site-dropdown site-dropdown--cta"
-              >
-                <div className="site-dropdown__menu site-dropdown__menu--cta">
-                  {renderMenuItems(joinMovementItems, 'site-dropdown__link')}
-                </div>
-              </div>
+            <div className="site-header__cta-wrap">
+              <Link to="/become-a-civil-citizen" className="site-header__cta">
+                <span>Become a Civil Citizen</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -185,32 +186,38 @@ export default function SiteLayout({ children }) {
           className={`mobile-nav${isMenuOpen ? ' is-open' : ''}`}
           aria-label="Mobile primary navigation"
         >
-          {primaryNavigation.map((section) => (
-            <details key={section.id} className="mobile-nav__section">
-              <summary className="mobile-nav__summary">{section.label}</summary>
-              <div className="mobile-nav__content">
-                {section.type === 'mega' ? (
-                  <>
-                    <NavLink to={section.overview.path} className="mobile-nav__overview">
-                      <span className="mobile-nav__overview-label">{section.overview.label}</span>
-                      <span className="mobile-nav__overview-summary">{section.overview.summary}</span>
-                    </NavLink>
-                    <div className="mobile-nav__concept-grid">
-                      {renderConceptItems(section.groups, 'mobile-nav__concept')}
-                    </div>
-                  </>
-                ) : (
-                  <div className="mobile-nav__links">{renderMenuItems(section.items, 'mobile-nav__link')}</div>
-                )}
-              </div>
-            </details>
-          ))}
-          <details className="mobile-nav__section mobile-nav__section--cta">
-            <summary className="mobile-nav__summary mobile-nav__summary--cta">Join Movement</summary>
-            <div className="mobile-nav__content">
-              <div className="mobile-nav__links">{renderMenuItems(joinMovementItems, 'mobile-nav__link')}</div>
-            </div>
-          </details>
+          {primaryNavigation.map((section) => {
+            if (section.type === 'direct') {
+              return (
+                <NavLink key={section.id} to={section.path} className="mobile-nav__summary mobile-nav__summary--link">
+                  {section.label}
+                </NavLink>
+              )
+            }
+
+            return (
+              <details key={section.id} className="mobile-nav__section">
+                <summary className="mobile-nav__summary">{section.label}</summary>
+                <div className="mobile-nav__content">
+                  {section.type === 'mega' ? (
+                    <>
+                      <div className="mobile-nav__concept-grid">
+                        {renderConceptItems(section.groups, 'mobile-nav__concept')}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="mobile-nav__links">{renderMenuItems(section.items, 'mobile-nav__link')}</div>
+                  )}
+                </div>
+              </details>
+            )
+          })}
+          <NavLink
+            to="/become-a-civil-citizen"
+            className="mobile-nav__summary mobile-nav__summary--cta mobile-nav__summary--cta-link"
+          >
+            Become a Civil Citizen
+          </NavLink>
         </div>
       </header>
       <main className="site-main">{children}</main>
