@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { primaryNavigation } from '../data/navigation'
+import { joinMovementItems, primaryNavigation } from '../data/navigation'
 import SiteFooter from './SiteFooter'
 
 export default function SiteLayout({ children }) {
@@ -120,8 +120,6 @@ export default function SiteLayout({ children }) {
                   <div
                     key={section.id}
                     className={`site-nav__item${isOpen ? ' is-open' : ''}${isActive ? ' is-active' : ''}`}
-                    onMouseEnter={() => setOpenSectionId(section.id)}
-                    onMouseLeave={() => setOpenSectionId((current) => (current === section.id ? null : current))}
                   >
                     <button
                       type="button"
@@ -159,9 +157,27 @@ export default function SiteLayout({ children }) {
                 )
               })}
             </nav>
-            <Link to="/join-movement" className="site-header__cta">
-              Join Movement
-            </Link>
+            <div className={`site-header__cta-wrap${openSectionId === 'join-movement' ? ' is-open' : ''}`}>
+              <button
+                type="button"
+                className="site-header__cta"
+                aria-expanded={openSectionId === 'join-movement'}
+                aria-controls="nav-panel-join-movement"
+                onClick={() =>
+                  setOpenSectionId((current) => (current === 'join-movement' ? null : 'join-movement'))
+                }
+              >
+                <span>Join Movement</span>
+              </button>
+              <div
+                id="nav-panel-join-movement"
+                className="site-dropdown site-dropdown--cta"
+              >
+                <div className="site-dropdown__menu site-dropdown__menu--cta">
+                  {renderMenuItems(joinMovementItems, 'site-dropdown__link')}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -189,9 +205,12 @@ export default function SiteLayout({ children }) {
               </div>
             </details>
           ))}
-          <Link to="/join-movement" className="mobile-nav__cta button button--primary">
-            Join Movement
-          </Link>
+          <details className="mobile-nav__section mobile-nav__section--cta">
+            <summary className="mobile-nav__summary mobile-nav__summary--cta">Join Movement</summary>
+            <div className="mobile-nav__content">
+              <div className="mobile-nav__links">{renderMenuItems(joinMovementItems, 'mobile-nav__link')}</div>
+            </div>
+          </details>
         </div>
       </header>
       <main className="site-main">{children}</main>

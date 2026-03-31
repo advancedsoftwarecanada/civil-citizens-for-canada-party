@@ -354,47 +354,47 @@ const systemItems = [
   },
 ]
 
-const localItems = [
+export const joinMovementItems = [
   {
     label: 'Get Involved Overview',
     path: '/get-involved',
     summary: 'See the local, district, and volunteer pathways into the movement.',
-    parentLabel: 'Local / Get Involved',
+    parentLabel: 'Join Movement',
     parentPath: '/',
   },
   {
     label: 'Find Your Electoral District (EDA)',
     path: '/get-involved/find-your-eda',
     summary: 'A future lookup for the district structure that anchors local organizing.',
-    parentLabel: 'Local / Get Involved',
+    parentLabel: 'Join Movement',
     parentPath: '/get-involved',
   },
   {
     label: 'Start a Local Chapter',
     path: '/get-involved/start-a-local-chapter',
     summary: 'Explain how supporters can begin building district-level presence.',
-    parentLabel: 'Local / Get Involved',
+    parentLabel: 'Join Movement',
     parentPath: '/get-involved',
   },
   {
     label: 'Volunteer',
     path: '/get-involved/volunteer',
     summary: 'Outline volunteer roles, skills needed, and immediate ways to help.',
-    parentLabel: 'Local / Get Involved',
+    parentLabel: 'Join Movement',
     parentPath: '/get-involved',
   },
   {
     label: 'Become a Candidate',
     path: '/get-involved/become-a-candidate',
     summary: 'A future pathway for prospective candidates and district leaders.',
-    parentLabel: 'Local / Get Involved',
+    parentLabel: 'Join Movement',
     parentPath: '/get-involved',
   },
   {
     label: 'Events',
     path: '/get-involved/events',
     summary: 'A placeholder for rallies, chapter events, and public meetings.',
-    parentLabel: 'Local / Get Involved',
+    parentLabel: 'Join Movement',
     parentPath: '/get-involved',
   },
 ]
@@ -495,12 +495,6 @@ export const primaryNavigation = [
     items: systemItems,
   },
   {
-    id: 'local',
-    label: 'Local / Get Involved',
-    type: 'menu',
-    items: localItems,
-  },
-  {
     id: 'news',
     label: 'News & Updates',
     type: 'menu',
@@ -543,7 +537,7 @@ function collectNavigationPages(sections) {
   return pages
 }
 
-export const navigationPages = [...homeItems, ...collectNavigationPages(primaryNavigation)]
+export const navigationPages = [...homeItems, ...joinMovementItems, ...collectNavigationPages(primaryNavigation)]
 
 export const navigationLookup = navigationPages.reduce((lookup, page) => {
   lookup[page.path] = page
