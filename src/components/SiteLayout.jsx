@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { primaryNavigation } from '../data/navigation'
+import { getPrimaryNavigation } from '../data/localizedNavigation'
 import SiteFooter from './SiteFooter'
 
 export default function SiteLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
+  const { t, i18n } = useTranslation()
+  const primaryNavigation = getPrimaryNavigation()
 
   useEffect(() => {
     setIsMenuOpen(false)
@@ -49,19 +52,7 @@ export default function SiteLayout({ children }) {
       <header className="site-header">
         <div className="site-header__inner">
           <div className="site-header__top">
-            <button
-              type="button"
-              className="site-menu-button"
-              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={isMenuOpen}
-              aria-controls="primary-navigation"
-              onClick={() => setIsMenuOpen((open) => !open)}
-            >
-              <span className="site-menu-button__line" />
-              <span className="site-menu-button__line" />
-              <span className="site-menu-button__line" />
-            </button>
-            <Link to="/" className="site-brand" aria-label="Civil Citizens For Canada Party home">
+            <Link to="/" className="site-brand" aria-label={t('nav.homeAria')}>
               <img
                 src="/assets/img/CCC-512.png"
                 alt="Civil Citizens For Canada Party logo"
@@ -69,9 +60,24 @@ export default function SiteLayout({ children }) {
               />
               <span className="site-brand__text">CCC</span>
             </Link>
+            <div className="site-header__mobile-tools">
+              <LanguageToggle t={t} i18n={i18n} mobile />
+              <button
+                type="button"
+                className="site-menu-button"
+                aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+                aria-expanded={isMenuOpen}
+                aria-controls="primary-navigation"
+                onClick={() => setIsMenuOpen((open) => !open)}
+              >
+                <span className="site-menu-button__line" />
+                <span className="site-menu-button__line" />
+                <span className="site-menu-button__line" />
+              </button>
+            </div>
           </div>
           <div className="site-header__desktop">
-            <nav className="site-nav" aria-label="Primary">
+            <nav className="site-nav" aria-label={t('nav.primary')}>
               {primaryNavigation.map((section) => {
                 const isActive = isSectionActive(section)
 
@@ -87,9 +93,10 @@ export default function SiteLayout({ children }) {
                 )
               })}
             </nav>
+            <LanguageToggle t={t} i18n={i18n} />
             <div className="site-header__cta-wrap">
               <Link to="/become-a-civil-citizen" className="site-header__cta">
-                <span>Become a Civil Citizen</span>
+                <span>{t('nav.becomeCivilCitizen')}</span>
               </Link>
             </div>
           </div>
@@ -97,7 +104,7 @@ export default function SiteLayout({ children }) {
         <div
           id="primary-navigation"
           className={`mobile-nav${isMenuOpen ? ' is-open' : ''}`}
-          aria-label="Mobile primary navigation"
+          aria-label={t('nav.mobilePrimary')}
         >
           {primaryNavigation.map((section) => {
             return (
@@ -110,12 +117,39 @@ export default function SiteLayout({ children }) {
             to="/become-a-civil-citizen"
             className="mobile-nav__summary mobile-nav__summary--cta mobile-nav__summary--cta-link"
           >
-            Become a Civil Citizen
+            {t('nav.becomeCivilCitizen')}
           </NavLink>
         </div>
       </header>
       <main className="site-main">{children}</main>
       <SiteFooter />
+    </div>
+  )
+}
+
+function LanguageToggle({ t, i18n, mobile = false }) {
+  const isFrench = i18n.resolvedLanguage === 'fr-QC'
+
+  return (
+    <div
+      className={`language-toggle${mobile ? ' language-toggle--mobile' : ''}`}
+      role="group"
+      aria-label={t('ui.languageToggle')}
+    >
+      <button
+        type="button"
+        className={`language-toggle__button${!isFrench ? ' is-active' : ''}`}
+        onClick={() => i18n.changeLanguage('en-CA')}
+      >
+        {t('ui.english')}
+      </button>
+      <button
+        type="button"
+        className={`language-toggle__button${isFrench ? ' is-active' : ''}`}
+        onClick={() => i18n.changeLanguage('fr-QC')}
+      >
+        {t('ui.french')}
+      </button>
     </div>
   )
 }

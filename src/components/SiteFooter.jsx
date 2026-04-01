@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next'
+
 const githubUrl = 'https://github.com/advancedsoftwarecanada/civil-citizens-for-canada-party'
 
 export default function SiteFooter() {
+  const { t } = useTranslation()
+
   return (
     <footer className="site-footer">
       <div className="footer-inner">
@@ -11,15 +15,13 @@ export default function SiteFooter() {
             className="footer-brand__logo"
           />
           <div>
-          <p className="footer-title">Civil Citizens For Canada Party</p>
-          <p className="footer-copy">
-            A developing platform for citizens who want a simpler, fairer, and more transparent Canada.
-          </p>
+          <p className="footer-title">{t('footer.brand')}</p>
+          <p className="footer-copy">{t('footer.copy')}</p>
           </div>
         </div>
-        <nav className="footer-nav" aria-label="Footer">
-          <a href="/">Home</a>
-          <a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a>
+        <nav className="footer-nav" aria-label={t('footer.navLabel')}>
+          <a href="/">{t('footer.home')}</a>
+          <a href={githubUrl} target="_blank" rel="noreferrer">{t('footer.github')}</a>
         </nav>
       </div>
     </footer>

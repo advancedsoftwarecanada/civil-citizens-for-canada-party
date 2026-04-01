@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import joinCivilCitizensImage from '../../assets/img/become-a-civil-citizen/3-join-civil-citizens.jpg'
+import { localizeByLanguage } from '../lib/locale'
 
 const problemPoints = [
   'Systems are fragmented',
@@ -129,17 +131,80 @@ const coreIdeas = [
 ]
 
 export default function TheSystemPage() {
+  const { i18n } = useTranslation()
+  const content = localizeByLanguage(i18n, {
+    en: {
+      eyebrow: 'The Civil App',
+      title: 'Architecture Of A New Citizen System',
+      heroCopy:
+        'Civil is not a social network. It is the infrastructure layer for a functioning citizen economy.',
+      coreIdeaLabel: 'Core Idea',
+      coreIdeaTitle: 'One System. Not Five.',
+      coreIdeaCopy:
+        'Civil unifies community, commerce, careers, logistics, and governance into one national operating layer built specifically for Canadians.',
+      problemTitle: 'The Problem',
+      problemCopy:
+        'Canada is operating through fragmented tools and disconnected incentives. Civil is meant to replace that fragmentation with a coordinated national layer.',
+      shiftTitle: 'The Shift',
+      shiftCopy:
+        'This is a move away from isolated apps and toward a country-scale system designed to coordinate real people, real work, and real value.',
+      layersTitle: 'The Layers',
+      layersCopy: 'Civil is built as a unified citizen system with distinct layers that work together.',
+      whyTitle: 'Why It Matters',
+      whyCopy:
+        'The point is not novelty. The point is local power, economic sovereignty, and real coordination between citizens and communities.',
+      coreIdeasTitle: 'Core Ideas',
+      coreIdeasCopy:
+        'Civil is a unified architecture for community, commerce, work, logistics, and governance. These are the core ideas behind how it is meant to function.',
+      purpose: 'Purpose',
+      ctaTitle: 'Become A Civil Citizen',
+      ctaCopy:
+        'Civil only works when citizens step into the system and begin building inside it. Join the network, create your account, and start participating in a Canadian economic and civic layer designed to connect real people to real action.',
+      ctaButton: 'Become a Civil Citizen',
+      ctaAria: 'Become a Civil Citizen',
+      ctaAlt: 'Civil Citizens network invitation',
+    },
+    fr: {
+      eyebrow: 'L’application Civil',
+      title: 'Architecture d’un nouveau système citoyen',
+      heroCopy:
+        'Civil n’est pas un réseau social. C’est la couche d’infrastructure d’une économie citoyenne fonctionnelle.',
+      coreIdeaLabel: 'Idée centrale',
+      coreIdeaTitle: 'Un système. Pas cinq.',
+      coreIdeaCopy:
+        'Civil unifie la communauté, le commerce, les carrières, la logistique et la gouvernance dans une seule couche opérationnelle nationale conçue spécifiquement pour les Canadiens.',
+      problemTitle: 'Le problème',
+      problemCopy:
+        'Le Canada fonctionne avec des outils fragmentés et des incitatifs déconnectés. Civil vise à remplacer cette fragmentation par une couche nationale coordonnée.',
+      shiftTitle: 'Le virage',
+      shiftCopy:
+        'Il s’agit d’un passage d’applications isolées vers un système à l’échelle du pays conçu pour coordonner de vraies personnes, un vrai travail et une vraie valeur.',
+      layersTitle: 'Les couches',
+      layersCopy: 'Civil est conçu comme un système citoyen unifié avec des couches distinctes qui travaillent ensemble.',
+      whyTitle: 'Pourquoi cela compte',
+      whyCopy:
+        'L’objectif n’est pas la nouveauté. L’objectif est le pouvoir local, la souveraineté économique et une véritable coordination entre citoyens et communautés.',
+      coreIdeasTitle: 'Idées centrales',
+      coreIdeasCopy:
+        'Civil est une architecture unifiée pour la communauté, le commerce, le travail, la logistique et la gouvernance. Voici les idées centrales de son fonctionnement.',
+      purpose: 'But',
+      ctaTitle: 'Devenir un citoyen civil',
+      ctaCopy:
+        'Civil ne fonctionne que lorsque les citoyens entrent dans le système et commencent à y bâtir. Rejoignez le réseau, créez votre compte et commencez à participer à une couche économique et civique canadienne conçue pour relier de vraies personnes à de vraies actions.',
+      ctaButton: 'Devenir un citoyen civil',
+      ctaAria: 'Devenir un citoyen civil',
+      ctaAlt: 'Invitation au réseau Civil Citizens',
+    },
+  })
+
   return (
     <div className="system-page">
       <section className="hero-panel hero-panel--policy system-page__hero">
         <div className="policy-hero-grid">
           <div>
-            <p className="eyebrow">The Civil App</p>
-            <h1 className="hero-title hero-title--policy">Architecture Of A New Citizen System</h1>
-            <p className="hero-copy hero-copy--policy">
-              Civil is not a social network. It is the infrastructure layer for a functioning
-              citizen economy.
-            </p>
+            <p className="eyebrow">{content.eyebrow}</p>
+            <h1 className="hero-title hero-title--policy">{content.title}</h1>
+            <p className="hero-copy hero-copy--policy">{content.heroCopy}</p>
             <div className="policy-aside__list system-page__highlights" aria-label="System highlights">
               {layerPoints.map((highlight) => (
                 <span key={highlight}>{highlight}</span>
@@ -147,12 +212,9 @@ export default function TheSystemPage() {
             </div>
           </div>
           <aside className="policy-aside">
-            <p className="policy-aside__eyebrow">Core Idea</p>
-            <h2 className="policy-aside__title">One System. Not Five.</h2>
-            <p className="policy-aside__copy">
-              Civil unifies community, commerce, careers, logistics, and governance into one
-              national operating layer built specifically for Canadians.
-            </p>
+            <p className="policy-aside__eyebrow">{content.coreIdeaLabel}</p>
+            <h2 className="policy-aside__title">{content.coreIdeaTitle}</h2>
+            <p className="policy-aside__copy">{content.coreIdeaCopy}</p>
           </aside>
         </div>
       </section>
@@ -160,11 +222,8 @@ export default function TheSystemPage() {
       <section className="policy-foundation system-page__links">
         <div className="policy-foundation__heading">
           <div>
-            <h2 className="section-title">The Problem</h2>
-            <p className="section-copy">
-              Canada is operating through fragmented tools and disconnected incentives. Civil is
-              meant to replace that fragmentation with a coordinated national layer.
-            </p>
+            <h2 className="section-title">{content.problemTitle}</h2>
+            <p className="section-copy">{content.problemCopy}</p>
           </div>
         </div>
         <div className="system-page__mini-grid">
@@ -179,11 +238,8 @@ export default function TheSystemPage() {
       <section className="policy-foundation system-page__links">
         <div className="policy-foundation__heading">
           <div>
-            <h2 className="section-title">The Shift</h2>
-            <p className="section-copy">
-              This is a move away from isolated apps and toward a country-scale system designed
-              to coordinate real people, real work, and real value.
-            </p>
+            <h2 className="section-title">{content.shiftTitle}</h2>
+            <p className="section-copy">{content.shiftCopy}</p>
           </div>
         </div>
         <div className="system-page__mini-grid system-page__mini-grid--shift">
@@ -198,10 +254,8 @@ export default function TheSystemPage() {
       <section className="policy-foundation system-page__links">
         <div className="policy-foundation__heading">
           <div>
-            <h2 className="section-title">The Layers</h2>
-            <p className="section-copy">
-              Civil is built as a unified citizen system with distinct layers that work together.
-            </p>
+            <h2 className="section-title">{content.layersTitle}</h2>
+            <p className="section-copy">{content.layersCopy}</p>
           </div>
         </div>
         <div className="policy-aside__list system-page__highlights" aria-label="Civil layers">
@@ -214,11 +268,8 @@ export default function TheSystemPage() {
       <section className="policy-foundation system-page__links">
         <div className="policy-foundation__heading">
           <div>
-            <h2 className="section-title">Why It Matters</h2>
-            <p className="section-copy">
-              The point is not novelty. The point is local power, economic sovereignty, and real
-              coordination between citizens and communities.
-            </p>
+            <h2 className="section-title">{content.whyTitle}</h2>
+            <p className="section-copy">{content.whyCopy}</p>
           </div>
         </div>
         <div className="system-page__mini-grid">
@@ -233,11 +284,8 @@ export default function TheSystemPage() {
       <section className="policy-foundation system-page__links">
         <div className="policy-foundation__heading">
           <div>
-            <h2 className="section-title">Core Ideas</h2>
-            <p className="section-copy">
-              Civil is a unified architecture for community, commerce, work, logistics, and
-              governance. These are the core ideas behind how it is meant to function.
-            </p>
+            <h2 className="section-title">{content.coreIdeasTitle}</h2>
+            <p className="section-copy">{content.coreIdeasCopy}</p>
           </div>
         </div>
         <div className="policy-grid system-page__core-grid">
@@ -252,7 +300,7 @@ export default function TheSystemPage() {
               </div>
               {idea.purpose ? (
                 <p className="system-page__purpose">
-                  <strong>Purpose:</strong> {idea.purpose}
+                  <strong>{content.purpose}:</strong> {idea.purpose}
                 </p>
               ) : null}
             </article>
@@ -262,29 +310,25 @@ export default function TheSystemPage() {
 
       <section className="donate-page system-page__cta">
         <div className="donate-page__section">
-          <h2 className="donate-page__title">Become A Civil Citizen</h2>
+          <h2 className="donate-page__title">{content.ctaTitle}</h2>
           <div className="donate-page__grid">
             <div className="donate-page__panel">
-              <p className="donate-page__copy">
-                Civil only works when citizens step into the system and begin building inside it.
-                Join the network, create your account, and start participating in a Canadian
-                economic and civic layer designed to connect real people to real action.
-              </p>
+              <p className="donate-page__copy">{content.ctaCopy}</p>
               <div className="donate-page__actions">
                 <Link to="/become-a-civil-citizen" className="button button--primary">
-                  Become a Civil Citizen
+                  {content.ctaButton}
                 </Link>
               </div>
             </div>
             <Link
               to="/become-a-civil-citizen"
               className="donate-page__visual"
-              aria-label="Become a Civil Citizen"
+              aria-label={content.ctaAria}
             >
               <img
                 className="donate-page__image"
                 src={joinCivilCitizensImage}
-                alt="Civil Citizens network invitation"
+                alt={content.ctaAlt}
               />
             </Link>
           </div>
