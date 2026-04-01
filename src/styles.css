@@ -962,23 +962,28 @@ img {
 }
 
 .policy-foundation__heading {
-  display: flex;
-  gap: 1.5rem;
-  align-items: end;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 1.75rem;
+  align-items: start;
   padding-bottom: 1.5rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border);
 }
 
+.policy-foundation__heading > * {
+  min-width: 0;
+}
+
 .section-title {
-  margin-top: 0.4rem;
+  margin-top: 0;
   font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.94;
   text-transform: uppercase;
 }
 
 .section-copy {
-  max-width: 36rem;
+  max-width: 34rem;
   margin: 0;
   font-size: 0.98rem;
   line-height: 1.8;
@@ -1027,6 +1032,7 @@ img {
 .policy-card__title {
   margin-top: 0.85rem;
   font-size: 1.7rem;
+  line-height: 1.02;
 }
 
 .policy-card__description {
@@ -1081,6 +1087,63 @@ img {
   line-height: 1.85;
 }
 
+.founding-principles-page__hero,
+.founding-principles-page__section {
+  max-width: var(--site-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.founding-principles-page__section {
+  margin-top: 2rem;
+}
+
+.founding-principles-page__grid {
+  align-items: start;
+}
+
+.founding-principles-page__card {
+  display: grid;
+  align-content: start;
+}
+
+.founding-principles-page__list {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.2rem;
+}
+
+.founding-principles-page__item {
+  margin-top: 0;
+}
+
+.founding-principles-page__note {
+  margin: 1rem 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  font-weight: 700;
+}
+
+.founding-principles-page__closing {
+  margin-bottom: 0;
+}
+
+.founding-principles-page__expectation {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.founding-principles-page__actions {
+  margin-top: 1.5rem;
+}
+
 .policy-detail__coming-soon {
   margin: 2rem 0 0;
   padding: 1.1rem 1.2rem;
@@ -1097,6 +1160,460 @@ img {
 
 .policy-detail__actions {
   margin-top: 2rem;
+}
+
+.economic-detail__hero,
+.economic-detail__section {
+  max-width: var(--site-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.economic-detail__section {
+  margin-top: 2rem;
+}
+
+.economic-detail__hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.economic-detail__dek {
+  margin: 1rem 0 0;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.economic-detail__statement {
+  margin: 1.25rem 0 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.economic-detail__statement--aside {
+  margin-top: 1rem;
+}
+
+.economic-detail__aside {
+  align-self: stretch;
+}
+
+.economic-detail__principle-panel,
+.economic-detail__list-panel {
+  padding: 1.5rem;
+  border: 1px solid rgba(220, 38, 38, 0.14);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.economic-detail__grid {
+  align-items: stretch;
+}
+
+.economic-detail__card {
+  display: grid;
+  align-content: start;
+  min-height: 100%;
+}
+
+.economic-detail__card-copy {
+  margin-top: 1rem;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.economic-detail__two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  gap: 1.25rem;
+}
+
+.economic-detail__list-panel--accent {
+  display: grid;
+  align-content: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 244, 244, 0.9));
+}
+
+.economic-detail__subhead {
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.economic-detail__shift-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.economic-detail__shift-card {
+  padding: 1.6rem;
+  border: 1px solid rgba(220, 38, 38, 0.14);
+  border-radius: 1.6rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.economic-detail__shift-card--to {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 243, 243, 0.92));
+}
+
+.economic-detail__shift-label {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.economic-detail__shift-line {
+  margin: 0.85rem 0 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.economic-detail__outcomes {
+  margin-top: 0;
+}
+
+.economic-detail__closing {
+  margin-bottom: 0;
+}
+
+.economic-detail__closing-line {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.9rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.economic-detail__closing-line--small {
+  margin-top: 0.9rem;
+  font-size: clamp(1.2rem, 2.3vw, 1.7rem);
+}
+
+.technology-ai-page__hero,
+.technology-ai-page__section {
+  max-width: var(--site-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.technology-ai-page__section {
+  margin-top: 2rem;
+}
+
+.technology-ai-page__hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.technology-ai-page__hero-grid > *,
+.technology-ai-page__split-grid > * {
+  min-width: 0;
+}
+
+.technology-ai-page__aside {
+  align-self: stretch;
+}
+
+.technology-ai-page__grid {
+  align-items: stretch;
+}
+
+.technology-ai-page__grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.technology-ai-page__card {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.technology-ai-page__card--tight {
+  min-height: 9rem;
+  place-items: center;
+  text-align: center;
+}
+
+.technology-ai-page__card-line {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.technology-ai-page__card-copy {
+  margin-top: 0.95rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.technology-ai-page__split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.92fr);
+  gap: 1.25rem;
+}
+
+.technology-ai-page__split-grid .technology-ai-page__panel {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.technology-ai-page__split-grid .founding-principles-page__list {
+  justify-items: center;
+}
+
+.technology-ai-page__split-grid .policy-card__description,
+.technology-ai-page__split-grid .policy-detail__summary,
+.technology-ai-page__split-grid .technology-ai-page__card-line,
+.technology-ai-page__split-grid .technology-ai-page__subhead {
+  text-align: center;
+}
+
+.technology-ai-page__panel {
+  padding: 1.5rem;
+  border: 1px solid rgba(220, 38, 38, 0.14);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.technology-ai-page__panel--accent {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 243, 243, 0.92));
+}
+
+.technology-ai-page__subhead {
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.technology-ai-page__list {
+  margin-top: 0.2rem;
+}
+
+.technology-ai-page__outcomes {
+  margin-top: 0;
+}
+
+.technology-ai-page__one-line {
+  margin: 1.2rem 0 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.governance-page__hero,
+.governance-page__section {
+  max-width: var(--site-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.governance-page__section {
+  margin-top: 2rem;
+}
+
+.governance-page__grid {
+  align-items: stretch;
+}
+
+.governance-page__grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.governance-page__full-panel {
+  margin-top: 1.25rem;
+}
+
+.governance-page__note {
+  margin-top: 1rem;
+}
+
+.governance-page__note-strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.governance-page__closing {
+  margin-bottom: 0;
+}
+
+.governance-page__closing-copy {
+  margin-top: 1rem;
+}
+
+.governance-page__card-line--statement {
+  align-self: center;
+}
+
+.immigration-page__hero,
+.immigration-page__section {
+  max-width: var(--site-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.immigration-page__section {
+  margin-top: 2rem;
+}
+
+.immigration-page__inline-tags {
+  margin-top: 1rem;
+}
+
+.immigration-page__followup-panel,
+.immigration-page__full-panel {
+  margin-top: 1.25rem;
+}
+
+.immigration-page__grid {
+  align-items: stretch;
+}
+
+.immigration-page__statement {
+  margin-top: 0.5rem;
+}
+
+.immigration-page__note-strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.immigration-page__closing {
+  margin-bottom: 0;
+}
+
+.immigration-page__closing-copy {
+  margin-top: 1rem;
+}
+
+.agriculture-page__hero,
+.agriculture-page__section {
+  max-width: var(--site-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.agriculture-page__section {
+  margin-top: 2rem;
+}
+
+.agriculture-page__followup-copy,
+.agriculture-page__full-panel {
+  margin-top: 1.25rem;
+}
+
+.agriculture-page__note-strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.agriculture-page__closing {
+  margin-bottom: 0;
+}
+
+.defense-page__section {
+  gap: 1.5rem;
+}
+
+.defense-page__followup-copy {
+  margin-top: 1rem;
+}
+
+.defense-page__panel-spaced {
+  margin-top: 1.5rem;
+}
+
+.defense-page__outcomes {
+  margin-top: 1.25rem;
+}
+
+.defense-page__closing-line {
+  margin-top: 1.25rem;
+  font-weight: 700;
+}
+
+.energy-page__section {
+  gap: 1.5rem;
+}
+
+.energy-page__followup-copy,
+.energy-page__statement,
+.energy-page__closing-line {
+  margin-top: 1.25rem;
+}
+
+.energy-page__panel-spaced,
+.energy-page__full-panel {
+  margin-top: 1.5rem;
+}
+
+.energy-page__closing-line {
+  font-weight: 700;
+}
+
+.family-page__section {
+  gap: 1.5rem;
+}
+
+.family-page__followup-copy,
+.family-page__statement,
+.family-page__closing-title,
+.family-page__closing-line {
+  margin-top: 1.25rem;
+}
+
+.family-page__panel-spaced,
+.family-page__full-panel {
+  margin-top: 1.5rem;
+}
+
+.family-page__closing-line {
+  font-weight: 700;
 }
 
 .nav-placeholder {
@@ -1931,7 +2448,9 @@ img {
 
 .system-page__mini-card {
   display: grid;
-  align-content: start;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
   min-height: 11rem;
   padding: 1.5rem;
   border-radius: 1.6rem;
@@ -2031,6 +2550,11 @@ img {
   .policy-hero-grid,
   .policy-grid,
   .policy-foundation__heading,
+  .technology-ai-page__hero-grid,
+  .technology-ai-page__split-grid,
+  .technology-ai-page__grid--four,
+  .governance-page__grid--three,
+  .economic-detail__shift-grid,
   .footer-inner,
   .home-feature--split,
   .home-feature--reverse,
@@ -2063,6 +2587,7 @@ img {
   .hero-panel,
   .policy-foundation,
   .policy-aside,
+  .policy-detail__panel,
   .home-feature,
   .cta-page__hero,
   .cta-page__section,
@@ -2070,6 +2595,30 @@ img {
   .leadership-page__section,
   .donate-page__section {
     padding: 1.5rem;
+  }
+
+  .technology-ai-page__panel,
+  .policy-card,
+  .economic-detail__shift-card,
+  .system-page__mini-card {
+    padding: 1.35rem;
+  }
+
+  .policy-foundation {
+    border-radius: 1.6rem;
+  }
+
+  .policy-detail__title,
+  .policy-aside__title,
+  .technology-ai-page__one-line,
+  .economic-detail__shift-line {
+    line-height: 1;
+  }
+
+  .policy-aside__list span {
+    min-height: 2.1rem;
+    padding: 0.4rem 0.72rem;
+    letter-spacing: 0.1em;
   }
 
   .system-page__cta .donate-page__section {
@@ -2182,6 +2731,76 @@ img {
 
   .policy-grid {
     grid-template-columns: 1fr;
+  }
+
+  .technology-ai-page__hero-grid,
+  .technology-ai-page__split-grid,
+  .technology-ai-page__grid--four,
+  .governance-page__grid--three,
+  .economic-detail__shift-grid,
+  .system-page__mini-grid,
+  .system-page__mini-grid--shift,
+  .system-page__core-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .policy-foundation,
+  .technology-ai-page__panel,
+  .policy-card,
+  .economic-detail__shift-card {
+    padding: 1.2rem;
+    border-radius: 1.3rem;
+  }
+
+  .policy-foundation__heading {
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .policy-detail__title {
+    margin-top: 1rem;
+    font-size: clamp(1.95rem, 10vw, 2.75rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.55rem, 8vw, 2.1rem);
+    line-height: 0.98;
+  }
+
+  .policy-detail__summary,
+  .section-copy,
+  .policy-aside__copy,
+  .policy-card__description {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .technology-ai-page__card-line,
+  .economic-detail__subhead,
+  .technology-ai-page__subhead {
+    font-size: 1.02rem;
+    line-height: 1.08;
+  }
+
+  .policy-aside__title,
+  .technology-ai-page__one-line,
+  .economic-detail__shift-line,
+  .economic-detail__closing-line {
+    font-size: clamp(1.45rem, 8vw, 2.1rem);
+    line-height: 1;
+  }
+
+  .policy-aside__list {
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .policy-aside__list span {
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .button {

@@ -23,10 +23,10 @@ const homeItems = [
   },
 ]
 
-const aboutItems = [
+export const aboutItems = [
   {
     label: 'About Overview',
-    path: '/about-ccc',
+    path: '/about',
     summary: 'A high-level introduction to the movement, its mission, and why it exists.',
     parentLabel: 'About',
     parentPath: '/',
@@ -37,71 +37,74 @@ const aboutItems = [
     path: '/about/what-is-civil-citizens-canada',
     summary: 'Explain what CCC is, who it serves, and the role it intends to play in Canada.',
     parentLabel: 'About',
-    parentPath: '/about-ccc',
+    parentPath: '/about',
+    hideInNav: true,
   },
   {
     label: 'Founding Principles',
     path: '/about/founding-principles',
     summary: 'Outline the core principles that guide the party and its policy approach.',
     parentLabel: 'About',
-    parentPath: '/about-ccc',
+    parentPath: '/about',
   },
   {
     label: 'Why CCC Exists',
     path: '/about/why-ccc-exists',
     summary: 'Set out the political and civic case for why CCC is being built now.',
     parentLabel: 'About',
-    parentPath: '/about-ccc',
+    parentPath: '/about',
+    hideInNav: true,
   },
   {
     label: 'Leadership',
     path: '/about/leadership',
     summary: 'Meet the current public leadership profile and founding direction for CCC.',
     parentLabel: 'About',
-    parentPath: '/about-ccc',
+    parentPath: '/about',
   },
   {
     label: 'Structure',
     path: '/about/structure',
     summary: 'Describe the organizational path from EDA to provincial to national structure.',
     parentLabel: 'About',
-    parentPath: '/about-ccc',
+    parentPath: '/about',
+    hideInNav: true,
   },
 ]
 
-const platformGroups = [
+export const platformGroups = [
   {
     title: 'Economic Foundation',
-    path: '/economic-policy',
+    path: '/platform/economic-foundation',
     summary: 'Tax policy, growth, and a productive economy that rewards work and investment.',
     items: [
       {
         label: 'Tax Reform',
-        path: '/economic-policy',
+        path: '/platform/economic-foundation',
         summary: 'The live economic policy overview and tax reform foundation page.',
         parentLabel: 'Economic Foundation',
-        parentPath: '/economic-policy',
+        parentPath: '/platform/economic-foundation',
       },
       {
         label: 'Small Business Growth',
         path: '/platform/economic-foundation/small-business-growth',
         summary: 'How CCC plans to simplify conditions for entrepreneurs and local employers.',
         parentLabel: 'Economic Foundation',
-        parentPath: '/economic-policy',
+        parentPath: '/platform/economic-foundation',
       },
       {
         label: 'Canadian Industry',
         path: '/platform/economic-foundation/canadian-industry',
         summary: 'A placeholder for industrial development, productivity, and domestic capacity.',
         parentLabel: 'Economic Foundation',
-        parentPath: '/economic-policy',
+        parentPath: '/platform/economic-foundation',
       },
       {
         label: 'Cost of Living',
         path: '/platform/economic-foundation/cost-of-living',
         summary: 'A placeholder for household affordability and pressure relief policy.',
         parentLabel: 'Economic Foundation',
-        parentPath: '/economic-policy',
+        parentPath: '/platform/economic-foundation',
       },
     ],
   },
@@ -448,7 +451,7 @@ const newsItems = [
   },
 ]
 
-const supportItems = [
+export const supportItems = [
   {
     label: 'Support CCC Overview',
     path: '/support-ccc',
@@ -460,7 +463,7 @@ const supportItems = [
   {
     label: 'Donate',
     path: '/support-ccc/donate',
-    summary: 'A placeholder donation page for direct financial support.',
+    summary: 'Direct financial support for Civil Citizens through the live donation page.',
     parentLabel: 'Support CCC',
     parentPath: '/support-ccc',
   },
@@ -477,13 +480,15 @@ export const primaryNavigation = [
   {
     id: 'about',
     label: 'About',
-    type: 'menu',
+    type: 'direct',
+    path: '/about',
     items: aboutItems,
   },
   {
     id: 'platform',
     label: 'Platform',
-    type: 'mega',
+    type: 'direct',
+    path: '/platform',
     hideOverviewInNav: true,
     overview: {
       label: 'Platform Overview',
@@ -511,7 +516,8 @@ export const primaryNavigation = [
   {
     id: 'support',
     label: 'Support CCC',
-    type: 'menu',
+    type: 'direct',
+    path: '/support-ccc',
     items: supportItems,
   },
 ]

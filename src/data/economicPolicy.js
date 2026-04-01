@@ -19,15 +19,15 @@ export const economicPolicyPoints = [
   },
   {
     number: '4',
-    slug: 'empower-small-business-growth',
-    title: 'Empower Small Business Growth',
-    description: 'Lower business tax to drive hiring, equipment, and expansion.',
+    slug: 'no-more-stealth-taxes',
+    title: 'No More Stealth Taxes',
+    description: 'End hidden, layered, and backdoor costs.',
   },
   {
     number: '5',
-    slug: 'bigger-paycheques-not-bigger-deductions',
-    title: 'Bigger Paycheques, Not Bigger Deductions',
-    description: 'Reduce what gets taken before you even see your money.',
+    slug: 'empower-small-business-growth',
+    title: 'Empower Small Business Growth',
+    description: 'Lower barriers to hiring, expansion, and equipment investment.',
   },
   {
     number: '6',
@@ -37,15 +37,15 @@ export const economicPolicyPoints = [
   },
   {
     number: '7',
-    slug: 'protect-citizens-in-the-age-of-automation',
-    title: 'Protect Citizens in the Age of Automation',
-    description: 'No Canadian left behind by AI and robotics.',
+    slug: 'strengthen-the-canadian-economy-from-within',
+    title: 'Strengthen the Canadian Economy from Within',
+    description: 'Support local production, trade, and self-sufficiency.',
   },
   {
     number: '8',
-    slug: 'no-more-stealth-taxes',
-    title: 'No More Stealth Taxes',
-    description: 'End hidden, layered, and backdoor taxation.',
+    slug: 'protect-citizens-in-the-age-of-automation',
+    title: 'Protect Citizens in the Age of Automation',
+    description: 'Ensure Canadians are not left behind by AI and robotics.',
   },
   {
     number: '9',
@@ -55,8 +55,8 @@ export const economicPolicyPoints = [
   },
   {
     number: '10',
-    slug: 'tax-transparency-for-the-common-citizen',
-    title: 'Tax Transparency for the Common Citizen',
-    description: 'Clear language, no loopholes, no confusion.',
+    slug: 'build-a-system-that-works-for-citizens',
+    title: 'Build a System That Works for Citizens',
+    description: 'An economy designed for participation, not extraction.',
   },
 ]

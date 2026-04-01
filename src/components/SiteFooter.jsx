@@ -19,7 +19,6 @@ export default function SiteFooter() {
         </div>
         <nav className="footer-nav" aria-label="Footer">
           <a href="/">Home</a>
-          <a href="/economic-policy">Economic Policy</a>
           <a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a>
         </nav>
       </div>
