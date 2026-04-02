@@ -4,6 +4,7 @@ import civilAiImage from '../../assets/img/civil-ai.png'
 import civilAiInstructions from '../../ai-agents/civil-ai.md?raw'
 import { civilAiConfig, hasCivilAiConfig } from '../config/civilAi'
 import { getCivilAiKnowledge, getCivilAiPageIndex } from '../data/civilAiKnowledge'
+import { getPartyComparisonContext } from '../data/partyComparisonKnowledge'
 import { localizeByLanguage } from '../lib/locale'
 
 const MAX_CONTEXT_MESSAGES = 10
@@ -72,7 +73,11 @@ export default function CivilAiWidget() {
   const [isSending, setIsSending] = useState(false)
   const [sitemapRoutes, setSitemapRoutes] = useState([])
   const [animatedMessageIds, setAnimatedMessageIds] = useState([])
-  const [retrievalStatus, setRetrievalStatus] = useState({ phase: 'idle', routeTitles: [] })
+  const [retrievalStatus, setRetrievalStatus] = useState({
+    phase: 'idle',
+    routeTitles: [],
+    partyNames: [],
+  })
   const scrollRef = useRef(null)
 
   const content = localizeByLanguage(i18n, {
@@ -81,15 +86,14 @@ export default function CivilAiWidget() {
       closeLabel: 'Close Civil AI',
       kicker: 'Civil AI',
       title: 'Intelligence for a Civil Society.',
-      subtitle: 'Ask Civil AI your political questions...',
       welcome:
         'I am Civil AI. Ask about a community issue, a civic process, or what to do next inside Civil Citizens.',
-      placeholder: 'Ask Civil AI a question based on the CCC site...',
+      placeholder: 'Ask me about politics!',
       send: 'Send',
-      characterCount: '{{count}} / 1000',
       thinking: 'Civil AI is thinking...',
       searching: 'Searching CCC pages...',
       reviewing: 'Reviewing pages: {{pages}}',
+      reviewingParties: 'Reviewing party material: {{parties}}',
       error: 'Civil AI could not complete that request. Please try again in a moment.',
       unconfigured: 'Civil AI is not configured in this environment yet.',
       youJustAsked: 'You asked: "{{message}}"',
@@ -101,15 +105,14 @@ export default function CivilAiWidget() {
       closeLabel: 'Fermer Civil AI',
       kicker: 'Civil AI',
       title: 'Une intelligence pour une societe civile.',
-      subtitle: 'Posez vos questions politiques a Civil AI...',
       welcome:
         'Je suis Civil AI. Posez une question sur un enjeu communautaire, un processus civique ou la prochaine action a faire dans Civil Citizens.',
-      placeholder: 'Posez une question a Civil AI a partir du site CCC...',
+      placeholder: 'Demandez-moi la politique!',
       send: 'Envoyer',
-      characterCount: '{{count}} / 1000',
       thinking: 'Civil AI reflechit...',
       searching: 'Recherche dans les pages du CCC...',
       reviewing: 'Verification des pages : {{pages}}',
+      reviewingParties: 'Verification des partis : {{parties}}',
       error: 'Civil AI n a pas pu terminer cette demande. Veuillez reessayer dans un instant.',
       unconfigured: 'Civil AI n est pas configure dans cet environnement pour le moment.',
       youJustAsked: 'Vous avez demande : "{{message}}"',
@@ -182,7 +185,14 @@ export default function CivilAiWidget() {
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages, isOpen, isSending, retrievalStatus.phase, retrievalStatus.routeTitles.length])
+  }, [
+    messages,
+    isOpen,
+    isSending,
+    retrievalStatus.phase,
+    retrievalStatus.routeTitles.length,
+    retrievalStatus.partyNames.length,
+  ])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -216,12 +226,18 @@ export default function CivilAiWidget() {
     setInput('')
 
     if (!hasCivilAiConfig()) {
-      setMessages([...nextMessages, createMessage('assistant', content.unconfigured)])
+      const assistantMessage = createMessage('assistant', content.unconfigured)
+      setMessages([...nextMessages, assistantMessage])
+      void logQuestionAnswer({
+        question: trimmedInput,
+        answer: assistantMessage.content,
+        locale: i18n.resolvedLanguage || i18n.language,
+      })
       return
     }
 
     setIsSending(true)
-    setRetrievalStatus({ phase: 'searching', routeTitles: [] })
+    setRetrievalStatus({ phase: 'searching', routeTitles: [], partyNames: [] })
 
     try {
       const memoryReply = getMemoryRecallReply(trimmedInput, nextMessages, content)
@@ -230,14 +246,26 @@ export default function CivilAiWidget() {
         const assistantMessage = createMessage('assistant', memoryReply)
         setMessages((currentMessages) => [...currentMessages, assistantMessage])
         setAnimatedMessageIds((currentIds) => [...currentIds, assistantMessage.id])
+        void logQuestionAnswer({
+          question: trimmedInput,
+          answer: assistantMessage.content,
+          locale: i18n.resolvedLanguage || i18n.language,
+        })
         return
       }
 
+      const comparisonContext = await getPartyComparisonContext(
+        [trimmedInput, ...getRecentConversationMessages(nextMessages).map((message) => message.content)].join(' '),
+      )
       const relevantRoutes = await selectRelevantRoutes(trimmedInput, pageIndex, nextMessages)
       const routeTitles = getRouteTitles(relevantRoutes, pageIndex)
 
-      if (routeTitles.length > 0) {
-        setRetrievalStatus({ phase: 'reviewing', routeTitles })
+      if (routeTitles.length > 0 || comparisonContext.selectedParties.length > 0) {
+        setRetrievalStatus({
+          phase: 'reviewing',
+          routeTitles,
+          partyNames: comparisonContext.selectedParties.map((party) => party.name),
+        })
       }
 
       const relevantKnowledge = getCivilAiKnowledge(i18n, relevantRoutes)
@@ -250,7 +278,11 @@ export default function CivilAiWidget() {
             'api-key': civilAiConfig.apiKey,
           },
           body: JSON.stringify({
-            messages: buildAnswerRequestMessages(nextMessages, relevantKnowledge),
+            messages: buildAnswerRequestMessages(
+              nextMessages,
+              relevantKnowledge,
+              comparisonContext.knowledge,
+            ),
             temperature: 0.25,
           }),
         },
@@ -266,13 +298,23 @@ export default function CivilAiWidget() {
 
       setMessages((currentMessages) => [...currentMessages, assistantMessage])
       setAnimatedMessageIds((currentIds) => [...currentIds, assistantMessage.id])
+      void logQuestionAnswer({
+        question: trimmedInput,
+        answer: assistantMessage.content,
+        locale: i18n.resolvedLanguage || i18n.language,
+      })
     } catch (error) {
       console.error(error)
       const assistantMessage = createMessage('assistant', content.error)
       setMessages((currentMessages) => [...currentMessages, assistantMessage])
       setAnimatedMessageIds((currentIds) => [...currentIds, assistantMessage.id])
+      void logQuestionAnswer({
+        question: trimmedInput,
+        answer: assistantMessage.content,
+        locale: i18n.resolvedLanguage || i18n.language,
+      })
     } finally {
-      setRetrievalStatus({ phase: 'idle', routeTitles: [] })
+      setRetrievalStatus({ phase: 'idle', routeTitles: [], partyNames: [] })
       setIsSending(false)
     }
   }
@@ -297,7 +339,6 @@ export default function CivilAiWidget() {
             <div>
               <p className="civil-ai-panel__kicker">{content.kicker}</p>
               <h2 className="civil-ai-panel__title">{content.title}</h2>
-              <p className="civil-ai-panel__subtitle">{content.subtitle}</p>
             </div>
           </div>
           <button
@@ -338,10 +379,7 @@ export default function CivilAiWidget() {
                 <p className="civil-ai-message__status-label">
                   {retrievalStatus.phase === 'searching'
                     ? content.searching
-                    : content.reviewing.replace(
-                        '{{pages}}',
-                        formatRoutePreview(retrievalStatus.routeTitles),
-                      )}
+                    : buildReviewingStatusText(content, retrievalStatus)}
                 </p>
               </div>
             </article>
@@ -356,12 +394,9 @@ export default function CivilAiWidget() {
               onChange={(event) => setInput(event.target.value.slice(0, MAX_INPUT_LENGTH))}
               onKeyDown={handleKeyDown}
               placeholder={content.placeholder}
-              rows={3}
+              rows={2}
               maxLength={MAX_INPUT_LENGTH}
             />
-            <p className="civil-ai-panel__count">
-              {content.characterCount.replace('{{count}}', String(input.length))}
-            </p>
           </div>
           <button type="submit" className="civil-ai-panel__send" disabled={isSending || !input.trim()}>
             <span aria-hidden="true">↑</span>
@@ -449,7 +484,7 @@ function handleKeyDown(event) {
   event.currentTarget.form?.requestSubmit()
 }
 
-function buildAnswerRequestMessages(messages, knowledgeBase) {
+function buildAnswerRequestMessages(messages, knowledgeBase, comparisonKnowledge) {
   const recentMessages = getRecentConversationMessages(messages)
   const recentConversationSummary = recentMessages
     .map((message) => `- ${message.role}: ${message.content}`)
@@ -458,7 +493,7 @@ function buildAnswerRequestMessages(messages, knowledgeBase) {
   return [
     {
       role: 'system',
-      content: `${civilAiInstructions.trim()}\n\nConversation continuity rules:\n- The recent conversation window below is part of the usable context.\n- If the user refers to a previous question, answer, person, policy, or topic from that recent chat window, resolve that reference before answering.\n- If the user asks what they just asked or what you just said, answer directly from the recent chat window.\n\nAuthority rules:\n- Answer in a direct CCC voice, not as a narrator of retrieved documents.\n- Do not write phrases like "CCC says", "the page says", "the site says", or "according to the platform" unless the user asks for sources.\n- Give the conclusion first in plain declarative language.\n- Add links only when they materially help.\n\nRecent conversation window:\n${recentConversationSummary || '- None'}\n\nRelevant CCC pages:\n${knowledgeBase}`,
+      content: `${civilAiInstructions.trim()}\n\nConversation continuity rules:\n- The recent conversation window below is part of the usable context.\n- If the user refers to a previous question, answer, person, policy, or topic from that recent chat window, resolve that reference before answering.\n- If the user asks what they just asked or what you just said, answer directly from the recent chat window.\n\nAuthority rules:\n- Answer in a direct CCC voice, not as a narrator of retrieved documents.\n- Do not write phrases like "CCC says", "the page says", "the site says", or "according to the platform" unless the user asks for sources.\n- Give the conclusion first in plain declarative language.\n- Add links only when they materially help.\n\nRecent conversation window:\n${recentConversationSummary || '- None'}\n\nRelevant CCC pages:\n${knowledgeBase}${comparisonKnowledge ? `\n\nComparison party material:\n${comparisonKnowledge}` : ''}`,
     },
     ...recentMessages.map((message) => ({ role: message.role, content: message.content })),
   ]
@@ -857,4 +892,38 @@ function formatRoutePreview(routeTitles) {
   }
 
   return `${routeTitles.slice(0, 3).join(', ')} +${routeTitles.length - 3}`
+}
+
+function buildReviewingStatusText(content, retrievalStatus) {
+  const routeText = retrievalStatus.routeTitles.length
+    ? content.reviewing.replace('{{pages}}', formatRoutePreview(retrievalStatus.routeTitles))
+    : ''
+  const partyText = retrievalStatus.partyNames.length
+    ? content.reviewingParties.replace('{{parties}}', formatRoutePreview(retrievalStatus.partyNames))
+    : ''
+
+  return [routeText, partyText].filter(Boolean).join(' • ')
+}
+
+async function logQuestionAnswer({ question, answer, locale }) {
+  if (!civilAiConfig.logEndpoint || typeof fetch === 'undefined') {
+    return
+  }
+
+  try {
+    await fetch(civilAiConfig.logEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        timestamp: new Date().toISOString(),
+        locale,
+        question,
+        answer,
+      }),
+    })
+  } catch {
+    // Logging is optional and should never interrupt the chat experience.
+  }
 }

@@ -1,0 +1,40 @@
+{
+  "party": "liberal",
+  "name": "Liberal Party of Canada",
+  "pulled_at": "2026-04-02T16:27:38+00:00",
+  "max_pages": 5,
+  "page_count": 5,
+  "pages": [
+    {
+      "url": "https://liberal.ca/",
+      "title": "Liberal Party of Canada",
+      "text_file": "parties/liberal/pages/home.txt",
+      "characters": 3550
+    },
+    {
+      "url": "https://liberal.ca/meet-mark-carney",
+      "title": "Meet Mark Carney | Liberal Party of Canada",
+      "text_file": "parties/liberal/pages/meet-mark-carney.txt",
+      "characters": 2859
+    },
+    {
+      "url": "https://liberal.ca/your-liberal-mps",
+      "title": "Your Liberal MPs | Liberal Party of Canada",
+      "text_file": "parties/liberal/pages/your-liberal-mps.txt",
+      "characters": 8599
+    },
+    {
+      "url": "https://liberal.ca/platform",
+      "title": "Canada Strong | Liberal Party of Canada",
+      "text_file": "parties/liberal/pages/platform.txt",
+      "characters": 2138
+    },
+    {
+      "url": "https://liberal.ca/volunteer",
+      "title": "Volunteer | Liberal Action",
+      "text_file": "parties/liberal/pages/volunteer.txt",
+      "characters": 391
+    }
+  ],
+  "errors": []
+}

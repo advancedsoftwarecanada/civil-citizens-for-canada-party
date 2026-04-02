@@ -1,0 +1,40 @@
+{
+  "party": "ndp",
+  "name": "New Democratic Party",
+  "pulled_at": "2026-04-02T16:27:38+00:00",
+  "max_pages": 5,
+  "page_count": 5,
+  "pages": [
+    {
+      "url": "https://www.ndp.ca/",
+      "title": "Canada's NDP",
+      "text_file": "parties/ndp/pages/home.txt",
+      "characters": 715
+    },
+    {
+      "url": "https://www.ndp.ca/team",
+      "title": "Your NDP Team \u00ab Canada's NDP",
+      "text_file": "parties/ndp/pages/team.txt",
+      "characters": 1675
+    },
+    {
+      "url": "https://www.ndp.ca/news",
+      "title": "Latest News \u00ab Canada's NDP",
+      "text_file": "parties/ndp/pages/news.txt",
+      "characters": 2561
+    },
+    {
+      "url": "https://www.ndp.ca/events",
+      "title": "Events \u00ab Canada's NDP",
+      "text_file": "parties/ndp/pages/events.txt",
+      "characters": 1226
+    },
+    {
+      "url": "https://www.ndp.ca/donate?source=20211018_WEB_GEN_1_DONATE_NDPWS_NDP_EN_ALL",
+      "title": "Donate Today | Canada's NDP",
+      "text_file": "parties/ndp/pages/donate-add17259.txt",
+      "characters": 1053
+    }
+  ],
+  "errors": []
+}

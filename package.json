@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5173",
     "build": "vite build && python3 scripts/generate_sitemap.py",
-    "preview": "vite preview --host 0.0.0.0 --port 4173"
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "ai-log-server": "node scripts/ai_log_server.mjs",
+    "setup:party-scraper": "python3 -m venv .venv-party-scraper && .venv-party-scraper/bin/pip install -r requirements-party-scraper.txt && .venv-party-scraper/bin/python -m playwright install chromium && .venv-party-scraper/bin/python -m playwright install-deps chromium",
+    "pull:parties": ".venv-party-scraper/bin/python scripts/pull_party_sites.py"
   },
   "dependencies": {
     "i18next": "^26.0.3",

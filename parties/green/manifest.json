@@ -1,0 +1,28 @@
+{
+  "party": "green",
+  "name": "Green Party of Canada",
+  "pulled_at": "2026-04-02T16:29:25+00:00",
+  "max_pages": 3,
+  "page_count": 3,
+  "pages": [
+    {
+      "url": "https://www.greenparty.ca/en",
+      "title": "Green Party Of Canada",
+      "text_file": "parties/green/pages/en.txt",
+      "characters": 3547
+    },
+    {
+      "url": "https://www.greenparty.ca/en/candidates",
+      "title": "Candidates \u2013 Green Party Of Canada",
+      "text_file": "parties/green/pages/en-candidates.txt",
+      "characters": 1418
+    },
+    {
+      "url": "https://www.greenparty.ca/en/our-plan",
+      "title": "Plans \u2013 Green Party Of Canada",
+      "text_file": "parties/green/pages/en-our-plan.txt",
+      "characters": 3212
+    }
+  ],
+  "errors": []
+}

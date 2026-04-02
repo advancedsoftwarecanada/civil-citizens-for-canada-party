@@ -1,0 +1,33 @@
+{
+  "party": "block",
+  "name": "Bloc Quebecois",
+  "pulled_at": "2026-04-02T16:29:10+00:00",
+  "max_pages": 3,
+  "page_count": 3,
+  "pages": [
+    {
+      "url": "https://www.blocquebecois.org/",
+      "title": "Bloc Qu\u00e9b\u00e9cois",
+      "text_file": "parties/block/pages/home.txt",
+      "characters": 4670
+    },
+    {
+      "url": "https://www.blocquebecois.org/le-chef",
+      "title": "Bloc Qu\u00e9b\u00e9cois",
+      "text_file": "parties/block/pages/le-chef.txt",
+      "characters": 5631
+    },
+    {
+      "url": "https://www.blocquebecois.org/le-parti",
+      "title": "Bloc Qu\u00e9b\u00e9cois",
+      "text_file": "parties/block/pages/le-parti.txt",
+      "characters": 7380
+    }
+  ],
+  "errors": [
+    {
+      "url": "https://www.blocquebecois.org/plateforme",
+      "error": "Page.goto: Download is starting\nCall log:\n  - navigating to \"https://www.blocquebecois.org/plateforme\", waiting until \"networkidle\"\n"
+    }
+  ]
+}

@@ -21,6 +21,8 @@ export default function SiteFooter() {
         </div>
         <nav className="footer-nav" aria-label={t('footer.navLabel')}>
           <a href="/">{t('footer.home')}</a>
+          <a href="/privacy-policy">{t('footer.privacy')}</a>
+          <a href="/terms-and-conditions">{t('footer.terms')}</a>
           <a href={githubUrl} target="_blank" rel="noreferrer">{t('footer.github')}</a>
         </nav>
       </div>

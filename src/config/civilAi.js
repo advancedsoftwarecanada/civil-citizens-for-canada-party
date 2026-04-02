@@ -6,6 +6,7 @@ const fallbackConfig = {
   model: '',
   apiVersion: '',
   apiKey: '',
+  logEndpoint: '/api/ai-log',
 }
 
 export const civilAiConfig =

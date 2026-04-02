@@ -1,0 +1,40 @@
+{
+  "party": "ppc",
+  "name": "People's Party of Canada",
+  "pulled_at": "2026-04-02T16:41:56+00:00",
+  "max_pages": 5,
+  "page_count": 5,
+  "pages": [
+    {
+      "url": "https://www.peoplespartyofcanada.ca/",
+      "title": "Home - People's Party of Canada",
+      "text_file": "parties/ppc/pages/home.txt",
+      "characters": 1692
+    },
+    {
+      "url": "https://www.peoplespartyofcanada.ca/projects/new-candidate",
+      "title": "Not Found 404",
+      "text_file": "parties/ppc/pages/projects-new-candidate.txt",
+      "characters": 368
+    },
+    {
+      "url": "https://www.peoplespartyofcanada.ca/about",
+      "title": "About the Peoples Party of Canada",
+      "text_file": "parties/ppc/pages/about.txt",
+      "characters": 5088
+    },
+    {
+      "url": "https://www.peoplespartyofcanada.ca/candidates",
+      "title": "Candidates - PPC",
+      "text_file": "parties/ppc/pages/candidates.txt",
+      "characters": 4010
+    },
+    {
+      "url": "https://www.peoplespartyofcanada.ca/contact-us",
+      "title": "Contact Us",
+      "text_file": "parties/ppc/pages/contact-us.txt",
+      "characters": 562
+    }
+  ],
+  "errors": []
+}

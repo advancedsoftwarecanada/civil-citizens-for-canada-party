@@ -1,0 +1,28 @@
+{
+  "party": "conservative",
+  "name": "Conservative Party of Canada",
+  "pulled_at": "2026-04-02T16:29:34+00:00",
+  "max_pages": 3,
+  "page_count": 3,
+  "pages": [
+    {
+      "url": "https://www.conservative.ca/",
+      "title": "Conservative Party of Canada",
+      "text_file": "parties/conservative/pages/home.txt",
+      "characters": 806
+    },
+    {
+      "url": "https://www.conservative.ca/team",
+      "title": "Team - Conservative Party of Canada",
+      "text_file": "parties/conservative/pages/team.txt",
+      "characters": 583
+    },
+    {
+      "url": "https://www.conservative.ca/pierre-poilievre",
+      "title": "Pierre Poilievre - Conservative Party of Canada",
+      "text_file": "parties/conservative/pages/pierre-poilievre.txt",
+      "characters": 2230
+    }
+  ],
+  "errors": []
+}

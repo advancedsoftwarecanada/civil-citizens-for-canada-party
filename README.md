@@ -86,6 +86,8 @@ npm run preview
 ```text
 .
 ├── public/                # Static assets served as-is
+├── parties/               # Pulled text snapshots from other party websites
+├── scripts/               # Utility scripts such as sitemap and data pullers
 ├── src/
 │   ├── components/        # Shared React UI components
 │   ├── data/              # Structured policy/content data
@@ -156,6 +158,55 @@ You can use tools such as:
 - avoid unnecessary dependency churn
 - run the build before proposing a merge
 - prefer reusable components over duplicated markup
+
+## Party Comparison Puller
+
+This repository now includes a Python Playwright tool for pulling rendered public text from other Canadian federal party websites into local text files under `parties/`.
+
+### Install scraper dependencies
+
+```bash
+npm run setup:party-scraper
+```
+
+### Pull party data
+
+Pull all configured parties:
+
+```bash
+npm run pull:parties
+```
+
+Pull a single party or limit crawl size:
+
+```bash
+.venv-party-scraper/bin/python scripts/pull_party_sites.py --party ppc --max-pages 10
+.venv-party-scraper/bin/python scripts/pull_party_sites.py --party liberal --max-pages 10
+.venv-party-scraper/bin/python scripts/pull_party_sites.py --party ndp --party green --max-pages 15
+```
+
+### Output layout
+
+Each party folder under `parties/` stores:
+
+- `last_pulled.txt`
+- `manifest.json`
+- `combined.txt`
+- `pages/*.txt`
+
+This makes it straightforward to run scheduled pulls later with cron and feed the resulting text into Civil AI comparison workflows.
+
+## Civil AI Question Logging
+
+Civil AI can record anonymous question-and-answer pairs to `logs/question-answers.json` when the optional local log server is running.
+
+Start the logger:
+
+```bash
+npm run ai-log-server
+```
+
+The frontend posts anonymous records to the configured log endpoint and fails silently if the endpoint is unavailable. In production, this endpoint should be reverse-proxied to the Node logger or another server-side handler.
 
 ## Deployment Notes
 

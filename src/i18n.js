@@ -18,6 +18,8 @@ const resources = {
         navLabel: 'Footer',
         home: 'Home',
         github: 'GitHub',
+        privacy: 'Privacy Policy',
+        terms: 'Terms and Conditions',
       },
       nav: {
         becomeCivilCitizen: 'Become a Civil Citizen',
@@ -48,6 +50,8 @@ const resources = {
         navLabel: 'Pied de page',
         home: 'Accueil',
         github: 'GitHub',
+        privacy: 'Politique de confidentialite',
+        terms: 'Conditions d utilisation',
       },
       nav: {
         becomeCivilCitizen: 'Devenir un citoyen civil',

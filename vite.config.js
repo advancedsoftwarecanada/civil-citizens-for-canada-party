@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
         model: env.CIVIL_AI_MODEL || '',
         apiVersion: env.CIVIL_AI_API_VERSION || '',
         apiKey: env.CIVIL_AI_API_KEY || '',
+        logEndpoint: env.CIVIL_AI_LOG_ENDPOINT || '/api/ai-log',
       }),
     },
     plugins: [

@@ -16,10 +16,12 @@ import HumansInTheSingularityPage from './pages/HumansInTheSingularityPage'
 import LeadershipPage from './pages/LeadershipPage'
 import NewsUpdatesPage from './pages/NewsUpdatesPage'
 import PlatformPage from './pages/PlatformPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import TechnologyAIPage from './pages/TechnologyAIPage'
 import EconomicPolicyPage from './pages/EconomicPolicyPage'
 import EconomicPolicyDetailPage from './pages/EconomicPolicyDetailPage'
 import SupportPage from './pages/SupportPage'
+import TermsConditionsPage from './pages/TermsConditionsPage'
 import TheSystemPage from './pages/TheSystemPage'
 import NavigationPlaceholderPage from './pages/NavigationPlaceholderPage'
 
@@ -48,6 +50,8 @@ export default function App() {
         <Route path="/platform/governance" element={<GovernancePage />} />
         <Route path="/platform/immigration" element={<ImmigrationPage />} />
         <Route path="/support-ccc" element={<SupportPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
         <Route path="/the-civil-app" element={<TheSystemPage />} />
         <Route path="/news-updates" element={<NewsUpdatesPage />} />
         <Route path="/support-ccc/donate" element={<DonatePage />} />
