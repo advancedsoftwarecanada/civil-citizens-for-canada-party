@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { getPrimaryNavigation } from '../data/localizedNavigation'
@@ -16,8 +16,38 @@ export default function SiteLayout({ children }) {
   }, [location.pathname])
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [location.pathname])
+    if (typeof window === 'undefined' || !window.history) {
+      return
+    }
+
+    const previousScrollRestoration = window.history.scrollRestoration
+    window.history.scrollRestoration = 'manual'
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    resetPageScroll()
+
+    const firstFrame = window.requestAnimationFrame(() => {
+      resetPageScroll()
+
+      window.requestAnimationFrame(() => {
+        resetPageScroll()
+      })
+    })
+
+    const timeoutId = window.setTimeout(() => {
+      resetPageScroll()
+    }, 80)
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame)
+      window.clearTimeout(timeoutId)
+    }
+  }, [location.pathname, location.search, location.hash])
 
   function isSectionActive(section) {
     if (section.path && pathMatches(location.pathname, section.path)) {
@@ -162,4 +192,20 @@ function pathMatches(currentPath, targetPath) {
   }
 
   return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`)
+}
+
+function resetPageScroll() {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return
+  }
+
+  window.scrollTo(0, 0)
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
+
+  const siteMain = document.querySelector('.site-main')
+
+  if (siteMain instanceof HTMLElement) {
+    siteMain.scrollTop = 0
+  }
 }
