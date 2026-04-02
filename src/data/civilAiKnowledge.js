@@ -1,0 +1,670 @@
+import { localizeByLanguage } from '../lib/locale'
+
+function enhanceEntries(entries, metadata) {
+  return entries.map((entry) => {
+    const routeMetadata = metadata[entry.route]
+
+    if (!routeMetadata) {
+      return entry
+    }
+
+    return {
+      ...entry,
+      keywords: [...(entry.keywords || []), ...(routeMetadata.keywords || [])],
+      facts: [...entry.facts, ...(routeMetadata.extraFacts || [])],
+    }
+  })
+}
+
+const routeMetadataByLanguage = {
+  en: {
+    '/': {
+      keywords: ['movement', 'participation', 'future', 'citizen', 'responsibility', 'constructive politics'],
+      extraFacts: [
+        'The homepage rejects passive spectatorship and asks people to help shape civic outcomes.',
+        'Its framing is future-facing, practical, and built around contribution rather than grievance.',
+      ],
+    },
+    '/about/founding-principles': {
+      keywords: ['principles', 'civic responsibility', 'transparency', 'accountability', 'participation'],
+      extraFacts: [
+        'The founding principles emphasize practical civic duty instead of performative politics.',
+        'They position transparency and participation as structural features, not campaign slogans.',
+      ],
+    },
+    '/about/leadership': {
+      keywords: ['leadership', 'chairman', 'founder', 'candidates', 'electoral district association'],
+      extraFacts: [
+        'Leadership is presented as both current direction and an open invitation to future candidates.',
+        'The page ties leadership growth to district-level organization and local participation.',
+      ],
+    },
+    '/about/leadership/andy-normore': {
+      keywords: ['Andrew Normore', 'founder', 'chairman', 'software', 'AI', 'systems', 'armed forces'],
+      extraFacts: [
+        'The page presents Andrew Normore as a builder of systems, not only a public-facing political figure.',
+        'It emphasizes an intersection of civic vision, software architecture, automation, and organizational design.',
+      ],
+    },
+    '/about/leadership/andy-normore/humans-in-the-singularity': {
+      keywords: ['book', 'Humans in the Singularity', 'foreword', 'AI transition', 'future of humanity'],
+      extraFacts: [
+        'The book page positions the work as a guide to navigating civilizational transition rather than a narrow tech manual.',
+        'It links intellectual framing to the broader Civil system vision.',
+      ],
+    },
+    '/become-a-civil-citizen': {
+      keywords: ['join', 'membership', 'sign up', 'become a member', 'participation'],
+      extraFacts: [
+        'The route is meant for action, not just reading, and points people toward structured involvement.',
+        'Membership is framed as practical participation inside a larger civic system.',
+      ],
+    },
+    '/platform': {
+      keywords: ['platform', 'policy', 'economy', 'governance', 'immigration', 'agriculture', 'energy', 'defense', 'family'],
+      extraFacts: [
+        'The platform overview acts as the policy map for the site.',
+        'It groups policy into a coherent systems view rather than isolated promises.',
+      ],
+    },
+    '/platform/economic-foundation': {
+      keywords: ['tax', 'income', 'small business', 'earned income', 'economic growth', 'reinvestment', 'cost of living'],
+      extraFacts: [
+        'The page argues that work should clearly outperform dependency and bureaucratic drag.',
+        'Its tax reform position is centered on simplification, visibility, and rewarding production.',
+        'It supports stronger conditions for small business formation, expansion, and reinvestment inside Canada.',
+      ],
+    },
+    '/platform/technology-ai': {
+      keywords: ['AI', 'automation', 'technology', 'innovation', 'workers', 'standards', 'national policy'],
+      extraFacts: [
+        'The page treats AI governance as a national systems issue instead of a narrow private-sector trend.',
+        'It stresses that citizens and workers should benefit from automation gains.',
+        'It frames innovation as legitimate only when it remains accountable to the public interest.',
+      ],
+    },
+    '/platform/governance': {
+      keywords: ['governance', 'chambers of citizens', 'district', 'identity', 'participation', 'voting'],
+      extraFacts: [
+        'The governance model is built around persistent participation rather than occasional election engagement.',
+        'It emphasizes district-based civic structure, verified identity, and accountable public input.',
+        'The page treats legitimacy as something strengthened by ongoing citizen involvement.',
+      ],
+    },
+    '/platform/immigration': {
+      keywords: ['immigration', 'housing capacity', 'integration', 'temporary pause', 'stabilization', 'border enforcement'],
+      extraFacts: [
+        'The page links immigration levels directly to housing, jobs, and infrastructure capacity.',
+        'It argues that restoring system balance is required before renewed growth in intake.',
+        'It frames lawful enforcement and integration capacity as prerequisites for public trust.',
+      ],
+    },
+    '/platform/agriculture-food': {
+      keywords: ['food', 'farming', 'agriculture', 'organic', 'greenhouse', 'domestic production', 'food sovereignty'],
+      extraFacts: [
+        'The page argues that Canada should treat food supply resilience as a matter of sovereignty.',
+        'It supports a transition toward cleaner food production with lower long-term public health costs.',
+        'It also supports expanding year-round greenhouse output and modern crop management tools.',
+      ],
+    },
+    '/platform/energy-infrastructure': {
+      keywords: ['energy', 'infrastructure', 'pipeline', 'refinery', 'nuclear', 'hydro', 'grid', 'affordability'],
+      extraFacts: [
+        'The page argues that Canadian resources should first serve Canadian affordability and national strength.',
+        'It supports major build-out in transport, refining, grid resilience, and storage.',
+        'It treats practical energy abundance as a foundation for productivity and sovereignty.',
+      ],
+    },
+    '/platform/defense-sovereignty': {
+      keywords: ['defense', 'sovereignty', 'public safety', 'justice', 'self-defense', 'homelessness', 'readiness'],
+      extraFacts: [
+        'The page defines sovereignty in domestic as well as military terms.',
+        'It combines public order, justice enforcement, recovery systems, and national readiness into one security frame.',
+        'It treats chronic disorder and state weakness as sovereignty problems, not isolated local issues.',
+      ],
+    },
+    '/platform/family-society': {
+      keywords: ['family', 'housing', 'society', 'speculation', 'community', 'cost of living', 'building homes'],
+      extraFacts: [
+        'The page treats stable family life as dependent on affordable housing and functioning communities.',
+        'It supports faster approvals, more building, and reduced speculative pressure in housing.',
+        'It links family security to lower costs and stronger local social conditions.',
+      ],
+    },
+    '/support-ccc': {
+      keywords: ['support', 'donate', 'join', 'participate', 'contribute'],
+      extraFacts: [
+        'Support routes are framed around direct participation and contribution.',
+      ],
+    },
+    '/support-ccc/donate': {
+      keywords: ['donate', 'financial support', 'contribution', 'funding'],
+      extraFacts: [
+        'The donation route is the primary public entry for direct financial support.',
+      ],
+    },
+    '/the-civil-app': {
+      keywords: ['Civil app', 'platform', 'civic operating layer', 'participation system', 'governance tool'],
+      extraFacts: [
+        'The Civil app is described as infrastructure for civic participation rather than a one-off campaign product.',
+        'It is presented as a system for coordinating governance, participation, and economic activity together.',
+      ],
+    },
+    '/news-updates': {
+      keywords: ['news', 'updates', 'announcements', 'campaign progress'],
+      extraFacts: [
+        'The route is intended as the public stream for official movement updates.',
+      ],
+    },
+  },
+  fr: {
+    '/': {
+      keywords: ['mouvement', 'participation', 'avenir', 'citoyen', 'responsabilite', 'politique constructive'],
+      extraFacts: [
+        'La page d accueil rejette le role de simple spectateur et demande aux gens de contribuer aux resultats civiques.',
+        'Son ton est axe sur l avenir, le concret et la contribution plutot que sur le ressentiment.',
+      ],
+    },
+    '/about/founding-principles': {
+      keywords: ['principes', 'responsabilite civique', 'transparence', 'responsabilite', 'participation'],
+      extraFacts: [
+        'Les principes fondateurs mettent l accent sur le devoir civique concret plutot que sur une politique performative.',
+        'Ils presentent la transparence et la participation comme des caracteristiques structurelles et non comme des slogans.',
+      ],
+    },
+    '/about/leadership': {
+      keywords: ['leadership', 'president', 'fondateur', 'candidats', 'association de district electoral'],
+      extraFacts: [
+        'Le leadership est presente a la fois comme direction actuelle et comme invitation a de futurs candidats.',
+        'La page relie la croissance du leadership a l organisation locale par district.',
+      ],
+    },
+    '/about/leadership/andy-normore': {
+      keywords: ['Andrew Normore', 'fondateur', 'president', 'logiciel', 'IA', 'systemes', 'Forces armees'],
+      extraFacts: [
+        'La page presente Andrew Normore comme un batisseur de systemes et non seulement comme une figure politique publique.',
+        'Elle souligne le lien entre vision civique, architecture logicielle, automatisation et conception organisationnelle.',
+      ],
+    },
+    '/about/leadership/andy-normore/humans-in-the-singularity': {
+      keywords: ['livre', 'Humans in the Singularity', 'preface', 'transition IA', 'avenir de l humanite'],
+      extraFacts: [
+        'La page du livre presente l ouvrage comme un guide pour traverser une transition civilisationnelle plutot qu un manuel technique restreint.',
+        'Elle relie ce cadre intellectuel a la vision plus large du systeme Civil.',
+      ],
+    },
+    '/become-a-civil-citizen': {
+      keywords: ['adhesion', 'rejoindre', 'inscription', 'devenir membre', 'participation'],
+      extraFacts: [
+        'Cette route est concue pour l action concrete et non pour une simple lecture.',
+        'L adhesion y est presentee comme une participation pratique a l interieur d un systeme civique plus vaste.',
+      ],
+    },
+    '/platform': {
+      keywords: ['plateforme', 'politique', 'economie', 'gouvernance', 'immigration', 'agriculture', 'energie', 'defense', 'famille'],
+      extraFacts: [
+        'La vue d ensemble de la plateforme agit comme carte politique du site.',
+        'Elle regroupe les politiques dans une logique de systeme plutot que comme une liste de promesses isolees.',
+      ],
+    },
+    '/platform/economic-foundation': {
+      keywords: ['taxe', 'revenu', 'petite entreprise', 'revenu gagne', 'croissance economique', 'reinvestissement', 'cout de la vie'],
+      extraFacts: [
+        'La page soutient que le travail doit clairement mieux recompenser que la dependance et la lourdeur bureaucratique.',
+        'La reforme fiscale y est centree sur la simplicite, la lisibilite et la recompense de la production.',
+        'Elle soutient de meilleures conditions pour la creation, l expansion et le reinvestissement des petites entreprises au Canada.',
+      ],
+    },
+    '/platform/technology-ai': {
+      keywords: ['IA', 'automatisation', 'technologie', 'innovation', 'travailleurs', 'normes', 'politique nationale'],
+      extraFacts: [
+        'La page traite la gouvernance de l IA comme un enjeu de systeme national.',
+        'Elle insiste pour que les citoyens et les travailleurs beneficient des gains d automatisation.',
+        'Elle presente l innovation comme legitime seulement si elle reste responsable envers l interet public.',
+      ],
+    },
+    '/platform/governance': {
+      keywords: ['gouvernance', 'chambres de citoyens', 'district', 'identite', 'participation', 'vote'],
+      extraFacts: [
+        'Le modele de gouvernance repose sur une participation persistante plutot que sur un engagement electoral occasionnel.',
+        'Il met l accent sur la structure civique par district, l identite verifiee et la responsabilite publique.',
+        'La page traite la legitimite comme quelque chose qui se renforce par l implication continue des citoyens.',
+      ],
+    },
+    '/platform/immigration': {
+      keywords: ['immigration', 'capacite de logement', 'integration', 'pause temporaire', 'stabilisation', 'application de la loi'],
+      extraFacts: [
+        'La page relie directement les niveaux d immigration au logement, aux emplois et a la capacite des infrastructures.',
+        'Elle soutient qu un retour a l equilibre du systeme est necessaire avant une reprise de la croissance.',
+        'Elle presente l application de la loi et la capacite d integration comme conditions de la confiance publique.',
+      ],
+    },
+    '/platform/agriculture-food': {
+      keywords: ['alimentation', 'agriculture', 'fermes', 'biologique', 'serre', 'production nationale', 'souverainete alimentaire'],
+      extraFacts: [
+        'La page soutient que la resilience de l approvisionnement alimentaire doit etre traitee comme une question de souverainete.',
+        'Elle appuie une transition vers une production plus propre avec des couts de sante publique plus faibles a long terme.',
+        'Elle soutient aussi l expansion de la production en serre a l annee et des outils modernes de gestion des cultures.',
+      ],
+    },
+    '/platform/energy-infrastructure': {
+      keywords: ['energie', 'infrastructures', 'pipeline', 'raffinerie', 'nucleaire', 'hydro', 'reseau', 'abordabilite'],
+      extraFacts: [
+        'La page soutient que les ressources canadiennes doivent d abord servir l abordabilite et la puissance nationale du Canada.',
+        'Elle appuie une grande expansion du transport, du raffinage, de la resilience du reseau et du stockage.',
+        'Elle traite l abondance energetique pratique comme base de productivite et de souverainete.',
+      ],
+    },
+    '/platform/defense-sovereignty': {
+      keywords: ['defense', 'souverainete', 'securite publique', 'justice', 'legitime defense', 'itinerance', 'preparation'],
+      extraFacts: [
+        'La page definit la souverainete en termes interieurs aussi bien que militaires.',
+        'Elle rassemble ordre public, application de la justice, systemes de retablissement et preparation nationale dans un meme cadre de securite.',
+        'Elle considere le desordre chronique et la faiblesse de l Etat comme des problemes de souverainete.',
+      ],
+    },
+    '/platform/family-society': {
+      keywords: ['famille', 'logement', 'societe', 'speculation', 'communaute', 'cout de la vie', 'construction'],
+      extraFacts: [
+        'La page soutient que la stabilite familiale depend d un logement abordable et de communautes fonctionnelles.',
+        'Elle appuie des approbations plus rapides, plus de construction et une reduction de la pression speculative.',
+        'Elle relie la securite familiale a des couts plus bas et a de meilleures conditions locales.',
+      ],
+    },
+    '/support-ccc': {
+      keywords: ['soutien', 'don', 'rejoindre', 'participer', 'contribuer'],
+      extraFacts: [
+        'Les routes de soutien sont formulees autour de la participation et de la contribution directes.',
+      ],
+    },
+    '/support-ccc/donate': {
+      keywords: ['don', 'soutien financier', 'contribution', 'financement'],
+      extraFacts: [
+        'La route de don est le principal point d entree public pour un soutien financier direct.',
+      ],
+    },
+    '/the-civil-app': {
+      keywords: ['application Civil', 'plateforme', 'couche operationnelle civique', 'systeme de participation', 'outil de gouvernance'],
+      extraFacts: [
+        'L application Civil est decrite comme une infrastructure de participation civique et non comme un simple produit de campagne.',
+        'Elle est presentee comme un systeme qui coordonne ensemble gouvernance, participation et activite economique.',
+      ],
+    },
+    '/news-updates': {
+      keywords: ['nouvelles', 'mises a jour', 'annonces', 'progres de campagne'],
+      extraFacts: [
+        'Cette route est destinee a servir de flux public pour les mises a jour officielles du mouvement.',
+      ],
+    },
+  },
+}
+
+export function getCivilAiPageIndex(i18n) {
+  const entries = localizeByLanguage(i18n, {
+    en: [
+      {
+        route: '/',
+        title: 'Homepage',
+        summary: 'CCC presents itself as a constructive movement building an ideal future through participation, work, growth, and transparent systems.',
+        facts: [
+          'The homepage frames Civil Citizens as constructive and system-building rather than reactive.',
+          'A Civil Citizen is described as moving from passive participation to active responsibility.',
+          'The homepage emphasizes continuous participation, local involvement, and shaping outcomes instead of only reacting.',
+        ],
+      },
+      {
+        route: '/about',
+        title: 'About',
+        summary: 'The public About area currently centers on Leadership and Founding Principles.',
+        facts: ['About currently points users to Leadership and Founding Principles as the main public sections.'],
+      },
+      {
+        route: '/about/founding-principles',
+        title: 'Founding Principles',
+        summary: 'Founding Principles focuses on civic responsibility, constructive participation, transparency, and system-building.',
+        facts: [
+          'The page presents the movement as constructive, civic-minded, and oriented around responsibility.',
+          'The principles page is written as a set of direct foundational commitments rather than generic branding language.',
+        ],
+      },
+      {
+        route: '/about/leadership',
+        title: 'Leadership',
+        summary: 'Leadership introduces Andrew Normore, federal candidate recruitment, and Electoral District Association participation.',
+        facts: [
+          'Andrew Normore is presented as Chairman and Founder.',
+          'The leadership section includes federal candidate recruitment messaging.',
+          'The page also links users toward Electoral District Association exploration.',
+        ],
+      },
+      {
+        route: '/about/leadership/andy-normore',
+        title: 'Andrew Normore',
+        summary: 'Andrew Normore is presented as Chairman and Founder of Civil Citizens and the architect of its core system.',
+        facts: [
+          'Andrew Normore is described as the founder of Civil Citizens and the architect behind its core system.',
+          'He is described as having more than two decades of experience in software development, systems design, and business strategy.',
+          'His background includes advanced AI-driven platforms, automation systems, and next-generation marketplaces.',
+          'The page states that his background includes service in the Canadian Armed Forces.',
+          'The page includes contact details, a Civil profile, an X profile, a full biography presentation, and a book feature.',
+        ],
+      },
+      {
+        route: '/about/leadership/andy-normore/humans-in-the-singularity',
+        title: 'Humans in the Singularity',
+        summary: 'The book page presents the foreword, a compact table of contents, and purchase direction for Humans in the Singularity.',
+        facts: [
+          'The page frames the book around a historic transition in intelligence, skill, and knowledge.',
+          'It includes the foreword and a compact table of contents.',
+          'It also includes a purchase path through the Civil platform shop.',
+        ],
+      },
+      {
+        route: '/become-a-civil-citizen',
+        title: 'Become a Civil Citizen',
+        summary: 'This page is the direct entry point for becoming a member and joining through the Civil app.',
+        facts: [
+          'The page acts as a structured call to action for membership and formal participation.',
+          'It connects becoming a Civil Citizen to participation through the Civil app.',
+        ],
+      },
+      {
+        route: '/platform',
+        title: 'Platform',
+        summary: 'The platform overview groups the movement into economic, technological, governance, immigration, agriculture, energy, defense, and family policy areas.',
+        facts: ['Platform sections include Economic Foundation, Technology & AI, Governance, Immigration, Agriculture & Food, Energy & Infrastructure, Defense & Sovereignty, and Family & Society.'],
+      },
+      {
+        route: '/platform/economic-foundation',
+        title: 'Economic Foundation',
+        summary: 'Economic Foundation centers on tax reform, work, growth, productive reinvestment, small business, and an economy that rewards participation.',
+        facts: [
+          'Economic Foundation includes Make Work Worth It Again, Collapse the Tax Maze, Stop Punishing Earned Income, and No More Stealth Taxes.',
+          'It also includes small business growth, Canadian reinvestment, internal economic strength, automation-era protections, family support, and a citizen-centered system.',
+        ],
+      },
+      {
+        route: '/platform/technology-ai',
+        title: 'Technology & AI',
+        summary: 'Technology & AI emphasizes national standards, citizen benefit, worker protection, and accountable innovation.',
+        facts: [
+          'The page argues that AI and automation should strengthen citizens rather than displace them without a plan.',
+          'It emphasizes accountability, citizen protection, and national standards.',
+        ],
+      },
+      {
+        route: '/platform/governance',
+        title: 'Governance',
+        summary: 'Governance emphasizes Chambers of Citizens, local participation, verified identity, and continuous civic input.',
+        facts: [
+          'The page presents governance as continuous and participatory rather than something only observed during elections.',
+          'It emphasizes Chambers of Citizens organized by Electoral District.',
+          'It also emphasizes real identity and accountability.',
+        ],
+      },
+      {
+        route: '/platform/immigration',
+        title: 'Immigration',
+        summary: 'Immigration emphasizes stabilize first, then grow, with levels tied to housing, jobs, infrastructure, and lawful enforcement.',
+        facts: [
+          'The page argues for a temporary stabilization phase before resumed growth.',
+          'It ties immigration to capacity, integration, labour alignment, and public trust.',
+        ],
+      },
+      {
+        route: '/platform/agriculture-food',
+        title: 'Agriculture & Food',
+        summary: 'Agriculture & Food emphasizes food sovereignty, Canadian labour, clean production, innovation, and domestic-first supply.',
+        facts: [
+          'The page treats food as national infrastructure.',
+          'It emphasizes domestic production, clean organic transition, greenhouse expansion, and innovation in crop management.',
+        ],
+      },
+      {
+        route: '/platform/energy-infrastructure',
+        title: 'Energy & Infrastructure',
+        summary: 'Energy & Infrastructure emphasizes domestic energy sovereignty, major infrastructure build-out, a balanced energy mix, and affordability.',
+        facts: [
+          'The page prioritizes Canadian energy use for Canadian markets.',
+          'It supports pipelines, refineries, grid modernization, storage, and a balanced energy mix including oil and gas, nuclear, hydro, and practical renewables.',
+        ],
+      },
+      {
+        route: '/platform/defense-sovereignty',
+        title: 'Defense & Sovereignty',
+        summary: 'Defense & Sovereignty emphasizes public order, personal security, justice balance, recovery, homelessness intervention, and readiness.',
+        facts: [
+          'The page connects sovereignty to domestic order, public safety, and functioning systems.',
+          'It includes lawful self-defense, stronger justice enforcement, treatment and recovery, ending chronic homelessness, and national readiness.',
+        ],
+      },
+      {
+        route: '/platform/family-society',
+        title: 'Family & Society',
+        summary: 'Family & Society emphasizes housing as national infrastructure, anti-speculation, fast building approvals, lower cost of living, and stronger communities.',
+        facts: [
+          'The page treats housing as national infrastructure.',
+          'It emphasizes building more homes faster, cutting approval delays, reducing speculation, and lowering cost-of-living pressure on families.',
+        ],
+      },
+      {
+        route: '/support-ccc',
+        title: 'Support CCC',
+        summary: 'Support CCC directs users toward donations and participation pathways.',
+        facts: ['Support currently points users toward donating and becoming a Civil Citizen.'],
+      },
+      {
+        route: '/support-ccc/donate',
+        title: 'Donate',
+        summary: 'The donation page is the direct public route for financial support.',
+        facts: ['It acts as the main financial contribution page for the movement.'],
+      },
+      {
+        route: '/the-civil-app',
+        title: 'The Civil App',
+        summary: 'The Civil App is presented as a continuous civic operating layer for participation, governance, and economic coordination.',
+        facts: [
+          'The Civil app is framed as an operating layer rather than a simple website feature.',
+          'It connects participation, governance, and economic coordination in one system.',
+        ],
+      },
+      {
+        route: '/news-updates',
+        title: 'News & Updates',
+        summary: 'News & Updates is the route for public announcements, campaign progress, and published updates.',
+        facts: ['The page acts as the public stream for movement updates and announcements.'],
+      },
+    ],
+    fr: [
+      {
+        route: '/',
+        title: 'Accueil',
+        summary: 'Le CCC se presente comme un mouvement constructif qui batit un avenir ideal par la participation, le travail, la croissance et des systemes transparents.',
+        facts: [
+          'La page d accueil presente Citoyens Civils comme un mouvement constructif et axe sur la construction de systemes.',
+          'Un citoyen civil est decrit comme quelqu un qui passe d une participation passive a une responsabilite active.',
+          'La page d accueil met l accent sur la participation continue, l implication locale et la creation de resultats.',
+        ],
+      },
+      {
+        route: '/about',
+        title: 'A propos',
+        summary: 'La section publique A propos se concentre actuellement sur le leadership et les principes fondateurs.',
+        facts: ['La section A propos dirige actuellement vers le leadership et les principes fondateurs comme sections publiques principales.'],
+      },
+      {
+        route: '/about/founding-principles',
+        title: 'Principes fondateurs',
+        summary: 'Les principes fondateurs mettent l accent sur la responsabilite civique, la participation constructive, la transparence et la construction de systemes.',
+        facts: [
+          'La page presente le mouvement comme constructif, civique et axe sur la responsabilite.',
+          'Elle expose des engagements fondateurs directs plutot qu un langage de marque generique.',
+        ],
+      },
+      {
+        route: '/about/leadership',
+        title: 'Leadership',
+        summary: 'Le leadership presente Andrew Normore, le recrutement de candidats federaux et la participation aux associations de district electoral.',
+        facts: [
+          'Andrew Normore est presente comme president et fondateur.',
+          'La section comprend un message de recrutement de candidats federaux.',
+          'La page renvoie aussi vers l exploration des associations de district electoral.',
+        ],
+      },
+      {
+        route: '/about/leadership/andy-normore',
+        title: 'Andrew Normore',
+        summary: 'Andrew Normore est presente comme president et fondateur de Civil Citizens et comme l architecte de son systeme central.',
+        facts: [
+          'Andrew Normore est decrit comme le fondateur de Civil Citizens et l architecte de son systeme central.',
+          'Il est decrit comme ayant plus de vingt ans d experience en developpement logiciel, en conception de systemes et en strategie d affaires.',
+          'Son parcours comprend des plateformes avancees alimentees par l IA, des systemes d automatisation et des marches de nouvelle generation.',
+          'La page indique que son parcours comprend un service au sein des Forces armees canadiennes.',
+          'La page comprend des coordonnees, un profil Civil, un profil X, une biographie complete et une mise en avant du livre.',
+        ],
+      },
+      {
+        route: '/about/leadership/andy-normore/humans-in-the-singularity',
+        title: 'Humans in the Singularity',
+        summary: 'La page du livre presente la preface, une table des matieres compacte et un lien d achat pour Humans in the Singularity.',
+        facts: [
+          'La page presente le livre comme une reflexion sur une transition historique de l intelligence, de la competence et du savoir.',
+          'Elle comprend la preface et une table des matieres compacte.',
+          'Elle comprend aussi un lien d achat vers la boutique Civil.',
+        ],
+      },
+      {
+        route: '/become-a-civil-citizen',
+        title: 'Devenir un citoyen civil',
+        summary: 'Cette page est le point d entree direct pour devenir membre et rejoindre le mouvement par l application Civil.',
+        facts: [
+          'La page sert d appel a l action structure pour l adhesion et la participation formelle.',
+          'Elle relie l idee de devenir un citoyen civil a la participation par l application Civil.',
+        ],
+      },
+      {
+        route: '/platform',
+        title: 'Plateforme',
+        summary: 'La page plateforme regroupe les domaines economiques, technologiques, de gouvernance, d immigration, d agriculture, d energie, de defense et de famille.',
+        facts: ['La plateforme comprend la fondation economique, la technologie et l IA, la gouvernance, l immigration, l agriculture et l alimentation, l energie et les infrastructures, la defense et la souverainete, puis la famille et la societe.'],
+      },
+      {
+        route: '/platform/economic-foundation',
+        title: 'Fondation economique',
+        summary: 'La fondation economique se concentre sur la reforme fiscale, le travail, la croissance, le reinvestissement productif, les petites entreprises et une economie qui recompense la participation.',
+        facts: [
+          'La fondation economique comprend le travail, la simplification fiscale, la fin des taxes furtives et la protection du revenu gagne.',
+          'Elle couvre aussi les petites entreprises, le reinvestissement canadien, la force economique interne, les protections a l ere de l automatisation, les familles et un systeme centre sur les citoyens.',
+        ],
+      },
+      {
+        route: '/platform/technology-ai',
+        title: 'Technologie et IA',
+        summary: 'Technologie et IA met l accent sur des normes nationales, le benefice pour les citoyens, la protection des travailleurs et une innovation responsable.',
+        facts: [
+          'La page soutient que l IA et l automatisation doivent renforcer les citoyens plutot que les deplacer sans plan.',
+          'Elle met l accent sur la responsabilite, la protection des citoyens et des normes nationales.',
+        ],
+      },
+      {
+        route: '/platform/governance',
+        title: 'Gouvernance',
+        summary: 'La gouvernance met l accent sur les Chambres de citoyens, la participation locale, l identite verifiee et l apport civique continu.',
+        facts: [
+          'La page presente la gouvernance comme un processus continu et participatif plutot qu un simple moment electoral.',
+          'Elle met l accent sur les Chambres de citoyens organisees par district electoral.',
+          'Elle insiste aussi sur l identite reelle et la responsabilite.',
+        ],
+      },
+      {
+        route: '/platform/immigration',
+        title: 'Immigration',
+        summary: 'L immigration met l accent sur stabiliser d abord, puis croitre, avec des niveaux lies au logement, aux emplois, aux infrastructures et a l application de la loi.',
+        facts: [
+          'La page soutient une phase temporaire de stabilisation avant une reprise de la croissance.',
+          'Elle relie l immigration a la capacite, a l integration, a l alignement economique et a la confiance publique.',
+        ],
+      },
+      {
+        route: '/platform/agriculture-food',
+        title: 'Agriculture et alimentation',
+        summary: 'Agriculture et alimentation met l accent sur la souverainete alimentaire, la main-d oeuvre canadienne, la production propre, l innovation et l approvisionnement domestique d abord.',
+        facts: [
+          'La page traite l alimentation comme une infrastructure nationale.',
+          'Elle met l accent sur la production nationale, la transition propre et organique, les serres et l innovation agricole.',
+        ],
+      },
+      {
+        route: '/platform/energy-infrastructure',
+        title: 'Energie et infrastructures',
+        summary: 'Energie et infrastructures met l accent sur la souverainete energetique domestique, les grandes infrastructures, un bouquet energetique equilibre et l abordabilite.',
+        facts: [
+          'La page priorise l usage de l energie canadienne pour les marches canadiens.',
+          'Elle soutient les pipelines, les raffineries, la modernisation du reseau, le stockage et un bouquet energetique equilibre.',
+        ],
+      },
+      {
+        route: '/platform/defense-sovereignty',
+        title: 'Defense et souverainete',
+        summary: 'Defense et souverainete met l accent sur l ordre public, la securite personnelle, l equilibre judiciaire, le retablissement, l intervention sur l itinerance et la preparation.',
+        facts: [
+          'La page relie la souverainete a l ordre interieur, a la securite publique et au bon fonctionnement des systemes.',
+          'Elle comprend la legitime defense, une justice plus ferme, le traitement et le retablissement, la reduction de l itinerance chronique et la preparation nationale.',
+        ],
+      },
+      {
+        route: '/platform/family-society',
+        title: 'Famille et societe',
+        summary: 'Famille et societe met l accent sur le logement comme infrastructure nationale, l anti-speculation, des approbations rapides, un cout de la vie plus bas et des communautes plus fortes.',
+        facts: [
+          'La page traite le logement comme une infrastructure nationale.',
+          'Elle met l accent sur la construction acceleree, la reduction des retards, l anti-speculation et la baisse de la pression sur le cout de la vie des familles.',
+        ],
+      },
+      {
+        route: '/support-ccc',
+        title: 'Soutenir le CCC',
+        summary: 'Soutenir le CCC dirige les utilisateurs vers les dons et les voies de participation.',
+        facts: ['La section de soutien dirige actuellement vers les dons et l adhesion comme citoyen civil.'],
+      },
+      {
+        route: '/support-ccc/donate',
+        title: 'Faire un don',
+        summary: 'La page de dons est la route publique directe pour soutenir financierement le mouvement.',
+        facts: ['Elle sert de page principale de contribution financiere pour le mouvement.'],
+      },
+      {
+        route: '/the-civil-app',
+        title: 'L application Civil',
+        summary: 'L application Civil est presentee comme une couche operationnelle civique continue pour la participation, la gouvernance et la coordination economique.',
+        facts: [
+          'L application Civil est presentee comme une couche operationnelle et non comme une simple fonctionnalite de site.',
+          'Elle relie participation, gouvernance et coordination economique dans un seul systeme.',
+        ],
+      },
+      {
+        route: '/news-updates',
+        title: 'Nouvelles et mises a jour',
+        summary: 'Nouvelles et mises a jour est la route publique des annonces, du progres de campagne et des mises a jour publiees.',
+        facts: ['La page sert de flux public pour les mises a jour et les annonces du mouvement.'],
+      },
+    ],
+  })
+
+  const metadata = localizeByLanguage(i18n, routeMetadataByLanguage)
+
+  return enhanceEntries(entries, metadata)
+}
+
+export function getCivilAiKnowledge(i18n, routes) {
+  const index = getCivilAiPageIndex(i18n)
+  const selectedRoutes = Array.isArray(routes) && routes.length > 0 ? new Set(routes) : null
+  const entries = selectedRoutes ? index.filter((entry) => selectedRoutes.has(entry.route)) : index
+
+  return entries
+    .map(
+      (entry) =>
+        `${entry.title}\nRoute: ${entry.route}\n${entry.keywords?.length ? `Keywords: ${entry.keywords.join(', ')}\n` : ''}Summary: ${entry.summary}\nFacts:\n${entry.facts.map((fact) => `- ${fact}`).join('\n')}`,
+    )
+    .join('\n\n')
+}

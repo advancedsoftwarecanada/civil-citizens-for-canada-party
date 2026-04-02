@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { getPrimaryNavigation } from '../data/localizedNavigation'
+import CivilAiWidget from './CivilAiWidget'
 import SiteFooter from './SiteFooter'
 
 export default function SiteLayout({ children }) {
@@ -122,6 +123,7 @@ export default function SiteLayout({ children }) {
         </div>
       </header>
       <main className="site-main">{children}</main>
+      <CivilAiWidget />
       <SiteFooter />
     </div>
   )
