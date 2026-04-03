@@ -29,6 +29,27 @@ export default function SiteLayout({ children }) {
   }, [])
 
   useLayoutEffect(() => {
+    if (location.hash) {
+      scrollToHash(location.hash)
+
+      const firstFrame = window.requestAnimationFrame(() => {
+        scrollToHash(location.hash)
+
+        window.requestAnimationFrame(() => {
+          scrollToHash(location.hash)
+        })
+      })
+
+      const timeoutId = window.setTimeout(() => {
+        scrollToHash(location.hash)
+      }, 80)
+
+      return () => {
+        window.cancelAnimationFrame(firstFrame)
+        window.clearTimeout(timeoutId)
+      }
+    }
+
     resetPageScroll()
 
     const firstFrame = window.requestAnimationFrame(() => {
@@ -208,4 +229,24 @@ function resetPageScroll() {
   if (siteMain instanceof HTMLElement) {
     siteMain.scrollTop = 0
   }
+}
+
+function scrollToHash(hash) {
+  if (typeof window === 'undefined' || typeof document === 'undefined' || !hash) {
+    return
+  }
+
+  const targetId = decodeURIComponent(hash.replace(/^#/, ''))
+
+  if (!targetId) {
+    return
+  }
+
+  const target = document.getElementById(targetId)
+
+  if (!(target instanceof HTMLElement)) {
+    return
+  }
+
+  target.scrollIntoView({ block: 'start', behavior: 'auto' })
 }

@@ -8,6 +8,7 @@ import { getPartyComparisonContext } from '../data/partyComparisonKnowledge'
 import { localizeByLanguage } from '../lib/locale'
 
 const MAX_CONTEXT_MESSAGES = 10
+const MAX_CHAT_MESSAGES = 30
 const MAX_INPUT_LENGTH = 1000
 const CIVIL_AI_STORAGE_KEY = 'civil-ai-chat-history'
 const CIVIL_AI_OPEN_STATE_KEY = 'civil-ai-chat-open'
@@ -39,7 +40,8 @@ function getStoredMessages() {
       return []
     }
 
-    return parsedValue
+    return trimChatMessages(
+      parsedValue
       .filter(
         (message) =>
           message &&
@@ -50,11 +52,16 @@ function getStoredMessages() {
         id: typeof message.id === 'string' ? message.id : `stored-${index}`,
         role: message.role,
         content: message.content,
-      }))
+      })),
+    )
   } catch (error) {
     console.error(error)
     return []
   }
+}
+
+function trimChatMessages(messages) {
+  return messages.slice(-MAX_CHAT_MESSAGES)
 }
 
 function getStoredOpenState() {
@@ -199,7 +206,7 @@ export default function CivilAiWidget() {
       return
     }
 
-    window.localStorage.setItem(CIVIL_AI_STORAGE_KEY, JSON.stringify(messages))
+    window.localStorage.setItem(CIVIL_AI_STORAGE_KEY, JSON.stringify(trimChatMessages(messages)))
   }, [messages])
 
   useEffect(() => {
@@ -220,14 +227,14 @@ export default function CivilAiWidget() {
     }
 
     const userMessage = createMessage('user', trimmedInput)
-    const nextMessages = [...messages, userMessage]
+    const nextMessages = trimChatMessages([...messages, userMessage])
 
     setMessages(nextMessages)
     setInput('')
 
     if (!hasCivilAiConfig()) {
       const assistantMessage = createMessage('assistant', content.unconfigured)
-      setMessages([...nextMessages, assistantMessage])
+      setMessages(trimChatMessages([...nextMessages, assistantMessage]))
       void logQuestionAnswer({
         question: trimmedInput,
         answer: assistantMessage.content,
@@ -244,7 +251,7 @@ export default function CivilAiWidget() {
 
       if (memoryReply) {
         const assistantMessage = createMessage('assistant', memoryReply)
-        setMessages((currentMessages) => [...currentMessages, assistantMessage])
+        setMessages((currentMessages) => trimChatMessages([...currentMessages, assistantMessage]))
         setAnimatedMessageIds((currentIds) => [...currentIds, assistantMessage.id])
         void logQuestionAnswer({
           question: trimmedInput,
@@ -296,7 +303,7 @@ export default function CivilAiWidget() {
       const reply = normalizeAssistantReply(extractAssistantReply(payload)) || content.error
       const assistantMessage = createMessage('assistant', reply)
 
-      setMessages((currentMessages) => [...currentMessages, assistantMessage])
+      setMessages((currentMessages) => trimChatMessages([...currentMessages, assistantMessage]))
       setAnimatedMessageIds((currentIds) => [...currentIds, assistantMessage.id])
       void logQuestionAnswer({
         question: trimmedInput,
@@ -306,7 +313,7 @@ export default function CivilAiWidget() {
     } catch (error) {
       console.error(error)
       const assistantMessage = createMessage('assistant', content.error)
-      setMessages((currentMessages) => [...currentMessages, assistantMessage])
+      setMessages((currentMessages) => trimChatMessages([...currentMessages, assistantMessage]))
       setAnimatedMessageIds((currentIds) => [...currentIds, assistantMessage.id])
       void logQuestionAnswer({
         question: trimmedInput,

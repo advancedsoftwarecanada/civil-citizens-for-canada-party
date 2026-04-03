@@ -61,10 +61,73 @@ const routeMetadataByLanguage = {
       ],
     },
     '/platform': {
-      keywords: ['platform', 'policy', 'economy', 'governance', 'immigration', 'agriculture', 'energy', 'defense', 'family'],
+      keywords: ['platform', 'policy', 'economy', 'governance', 'implementation', 'immigration', 'agriculture', 'energy', 'defense', 'family'],
       extraFacts: [
         'The platform overview acts as the policy map for the site.',
         'It groups policy into a coherent systems view rather than isolated promises.',
+      ],
+    },
+    '/platform/implementation/roadmap': {
+      keywords: ['roadmap', 'phase 1', 'phase 2', 'district activation', 'governance deployment', 'political integration', 'national scale'],
+      extraFacts: [
+        'The roadmap is organized into five phases running from foundation build-out to national scale.',
+        'It frames the transition as moving from low-participation closed systems toward transparent citizen-driven governance.',
+      ],
+    },
+    '/platform/implementation/restoring-power-to-citizens': {
+      keywords: ['riding', 'citizen power', 'district', 'EDA', 'local participation', 'candidate selection', 'transparent voting'],
+      extraFacts: [
+        'The page argues that local political power has been trapped inside small closed EDA structures.',
+        'It proposes Chambers of Citizens, open proposals, transparent funding, merit-based candidate selection, and continuous accountability at the riding level.',
+      ],
+    },
+    '/platform/implementation/chambers-of-citizens': {
+      keywords: ['chambers of citizens', 'district infrastructure', 'riding', 'members', 'contributors', 'coordinators', 'local governance'],
+      extraFacts: [
+        'The page defines Chambers of Citizens as the official Civil Citizens organization within each federal riding.',
+        'It presents Chambers as structured digital assemblies with members, contributors, coordinators, proposals, voting, funding, and execution loops.',
+      ],
+    },
+    '/platform/implementation/candidate-selection': {
+      keywords: ['candidate selection', 'nomination', 'merit-based selection', 'candidate profiles', 'community voting', 'open pathway'],
+      extraFacts: [
+        'The page rejects closed nomination contests in favor of continuous, transparent candidate development inside each riding.',
+        'It emphasizes open access, contribution-based evaluation, visible candidate profiles, community voting, and accountability before election.',
+      ],
+    },
+    '/platform/implementation/civil-wallet': {
+      keywords: ['civil wallet', 'funding model', 'transparent funding', 'member-controlled funds', 'micro-fee', 'digital wallet'],
+      extraFacts: [
+        'The page presents Civil Wallet as a transparent, citizen-controlled funding system for each Civil Chamber.',
+        'It emphasizes visible funds, vote-based allocations, micro-fee sustainability, secure infrastructure, and user data control.',
+      ],
+    },
+    '/platform/implementation/member-growth': {
+      keywords: ['member growth', 'participation growth', 'onboarding', 'network effects', 'active members', 'critical mass'],
+      extraFacts: [
+        'The page presents member growth as continuous, local, utility-driven participation rather than campaign-only recruitment.',
+        'It emphasizes frictionless onboarding, local relevance, everyday utility, referral loops, and a target of 1,000 active members per riding.',
+      ],
+    },
+    '/platform/implementation/mp-accountability': {
+      keywords: ['mp accountability', 'member of parliament accountability', 'citizen feedback', 'public activity reporting', 'confidence signals'],
+      extraFacts: [
+        'The page presents continuous, citizen-driven accountability for elected representatives within each riding.',
+        'It emphasizes public reporting, open communication, issue escalation, feedback loops, and measurable support signals.',
+      ],
+    },
+    '/platform/implementation/trust-safety': {
+      keywords: ['trust system', 'verification', 'human verification', 'gold maple leaf', 'community validation', 'bot prevention'],
+      extraFacts: [
+        'The page presents a layered human verification model that avoids centralized identity control while increasing trust over time.',
+        'It emphasizes verification levels, community validation, minimal data collection, and the Gold Maple Leaf as the highest-trust designation.',
+      ],
+    },
+    '/platform/implementation/digital-governance': {
+      keywords: ['digital governance', 'digital democracy', 'proposal engine', 'voting system', 'budget transparency', 'identity verification'],
+      extraFacts: [
+        'The page frames digital governance as a way to extend democratic participation beyond infrequent elections.',
+        'It emphasizes proposal submission, secure voting, budget transparency, identity verification, and continuous feedback loops.',
       ],
     },
     '/platform/economic-foundation': {
@@ -201,10 +264,73 @@ const routeMetadataByLanguage = {
       ],
     },
     '/platform': {
-      keywords: ['plateforme', 'politique', 'economie', 'gouvernance', 'immigration', 'agriculture', 'energie', 'defense', 'famille'],
+      keywords: ['plateforme', 'politique', 'economie', 'gouvernance', 'mise en oeuvre', 'immigration', 'agriculture', 'energie', 'defense', 'famille'],
       extraFacts: [
         'La vue d ensemble de la plateforme agit comme carte politique du site.',
         'Elle regroupe les politiques dans une logique de systeme plutot que comme une liste de promesses isolees.',
+      ],
+    },
+    '/platform/implementation/roadmap': {
+      keywords: ['feuille de route', 'phase 1', 'phase 2', 'activation des districts', 'deploiement de la gouvernance', 'integration politique', 'echelle nationale'],
+      extraFacts: [
+        'La feuille de route est organisee en cinq phases allant de la fondation a l echelle nationale.',
+        'Elle presente la transition comme un passage de systemes fermes et peu participatifs vers une gouvernance transparente dirigee par les citoyens.',
+      ],
+    },
+    '/platform/implementation/restoring-power-to-citizens': {
+      keywords: ['circonscription', 'pouvoir citoyen', 'district', 'ADE', 'participation locale', 'selection des candidats', 'vote transparent'],
+      extraFacts: [
+        'La page soutient que le pouvoir politique local est reste enferme dans de petites structures ADE fermees.',
+        'Elle propose les Chambres de citoyens, les propositions ouvertes, le financement transparent, la selection par le merite et une responsabilite continue a l echelle de la circonscription.',
+      ],
+    },
+    '/platform/implementation/chambers-of-citizens': {
+      keywords: ['chambres de citoyens', 'infrastructure de district', 'circonscription', 'membres', 'contributeurs', 'coordinateurs', 'gouvernance locale'],
+      extraFacts: [
+        'La page definit les Chambres de citoyens comme l organisation officielle de Civil Citizens dans chaque circonscription federale.',
+        'Elle presente les Chambres comme des assemblees numeriques structurees avec membres, contributeurs, coordinateurs, propositions, vote, financement et execution.',
+      ],
+    },
+    '/platform/implementation/candidate-selection': {
+      keywords: ['selection des candidats', 'nomination', 'selection par le merite', 'profils candidats', 'vote communautaire', 'parcours ouvert'],
+      extraFacts: [
+        'La page rejette les concours de nomination fermes au profit d un developpement continu et transparent des candidats dans chaque circonscription.',
+        'Elle met l accent sur l acces ouvert, l evaluation par la contribution, les profils visibles, le vote communautaire et la responsabilite avant l election.',
+      ],
+    },
+    '/platform/implementation/civil-wallet': {
+      keywords: ['portefeuille civil', 'modele de financement', 'financement transparent', 'fonds controles par les membres', 'microfrais', 'portefeuille numerique'],
+      extraFacts: [
+        'La page presente le Portefeuille Civil comme un systeme de financement transparent et controle par les citoyens dans chaque Chambre Civil.',
+        'Elle met l accent sur la visibilite des fonds, les allocations par vote, les microfrais durables, l infrastructure securisee et le controle des donnees par l utilisateur.',
+      ],
+    },
+    '/platform/implementation/member-growth': {
+      keywords: ['croissance des membres', 'croissance de la participation', 'integration', 'effets de reseau', 'membres actifs', 'masse critique'],
+      extraFacts: [
+        'La page presente la croissance des membres comme une participation continue, locale et utile, plutot qu un recrutement limite aux campagnes.',
+        'Elle met l accent sur une integration sans friction, la pertinence locale, l utilite quotidienne, les boucles de recommandation et une cible de 1 000 membres actifs par circonscription.',
+      ],
+    },
+    '/platform/implementation/mp-accountability': {
+      keywords: ['responsabilite des deputes', 'responsabilite parlementaire', 'retroaction citoyenne', 'rapports publics d activite', 'signaux de confiance'],
+      extraFacts: [
+        'La page presente une responsabilite continue, dirigee par les citoyens, pour les representants elus dans chaque circonscription.',
+        'Elle met l accent sur les rapports publics, la communication ouverte, l escalade des enjeux, les boucles de retroaction et des signaux mesurables d appui.',
+      ],
+    },
+    '/platform/implementation/trust-safety': {
+      keywords: ['systeme de confiance', 'verification', 'verification humaine', 'feuille d erable d or', 'validation communautaire', 'prevention des robots'],
+      extraFacts: [
+        'La page presente un modele de verification humaine par couches qui evite le controle centralise de l identite tout en augmentant la confiance avec le temps.',
+        'Elle met l accent sur des niveaux de verification, la validation communautaire, la collecte minimale de donnees et la Feuille d erable d or comme designation de confiance maximale.',
+      ],
+    },
+    '/platform/implementation/digital-governance': {
+      keywords: ['gouvernance numerique', 'democratie numerique', 'moteur de propositions', 'systeme de vote', 'transparence budgetaire', 'verification d identite'],
+      extraFacts: [
+        'La page presente la gouvernance numerique comme moyen d etendre la participation democratique au-dela des elections peu frequentes.',
+        'Elle met l accent sur les propositions, le vote securise, la transparence budgetaire, la verification d identite et les boucles de retroaction continues.',
       ],
     },
     '/platform/economic-foundation': {
@@ -403,6 +529,87 @@ export function getCivilAiPageIndex(i18n) {
         ],
       },
       {
+        route: '/platform/implementation/roadmap',
+        title: 'Roadmap',
+        summary: 'The roadmap lays out a five-phase transition from foundation launch to national-scale citizen-powered governance.',
+        facts: [
+          'Phase 1 covers foundation build and launch of the Civil platform, wallet, chambers framework, and early adopter onboarding.',
+          'Later phases cover district activation, governance deployment, political integration, and national scale.',
+        ],
+      },
+      {
+        route: '/platform/implementation/restoring-power-to-citizens',
+        title: 'Restoring Power to Citizens in Every Riding',
+        summary: 'This page focuses on shifting local political control from closed insider structures toward transparent, large-scale citizen participation in every riding.',
+        facts: [
+          'It identifies weak EDA participation, low transparency, insider control, and election-only engagement as the core local governance problem.',
+          'It proposes mass riding-level participation, transparent financial control, open proposals, merit-based candidate selection, and continuous accountability.',
+        ],
+      },
+      {
+        route: '/platform/implementation/chambers-of-citizens',
+        title: 'Chambers of Citizens',
+        summary: 'Chambers of Citizens are presented as the district-level operating infrastructure for local governance, participation, funding, coordination, and representation.',
+        facts: [
+          'The page defines three functional layers: Members, Contributors, and Coordinators.',
+          'It also explains how proposals, voting, funding through the Civil Wallet, and execution work inside each Chamber.',
+        ],
+      },
+      {
+        route: '/platform/implementation/candidate-selection',
+        title: 'Candidate Selection System',
+        summary: 'This page presents a transparent, merit-based, community-driven system for identifying, evaluating, and selecting candidates within each riding.',
+        facts: [
+          'It rejects closed nomination contests and insider influence in favor of open candidate pathways and contribution-based evaluation.',
+          'It includes transparent profiles, community voting, continuous selection, and accountability before election.',
+        ],
+      },
+      {
+        route: '/platform/implementation/civil-wallet',
+        title: 'Civil Wallet & Funding Model',
+        summary: 'This page presents Civil Wallet as a transparent, secure, citizen-controlled funding system for Chamber-level participation and decision-making.',
+        facts: [
+          'It explains visible funds, public spending proposals, vote-based allocations, and a micro-fee model capped at two dollars for larger transactions.',
+          'It also frames the wallet around security, privacy, interoperability, and user control over financial and participation data.',
+        ],
+      },
+      {
+        route: '/platform/implementation/member-growth',
+        title: 'Member Growth Strategy',
+        summary: 'This page presents a strategy for building large, active, and sustained riding-level participation through local relevance, everyday utility, and continuous engagement.',
+        facts: [
+          'It emphasizes frictionless onboarding, local-first participation, network effects, creator activation, and ongoing engagement loops.',
+          'It also identifies a target of more than one thousand active members per riding as the threshold for self-sustaining local governance.',
+        ],
+      },
+      {
+        route: '/platform/implementation/mp-accountability',
+        title: 'MP Accountability System',
+        summary: 'This page presents a continuous accountability system that keeps MPs visible, measurable, and directly connected to their riding between elections.',
+        facts: [
+          'It includes communication loops, public activity reporting, citizen feedback, support signals, and issue escalation inside each riding.',
+          'It also frames Civil as extending accountability from Parliament directly to citizens.',
+        ],
+      },
+      {
+        route: '/platform/implementation/trust-safety',
+        title: 'Human Verification & Trust System',
+        summary: 'This page presents a layered trust and verification system that protects participation integrity without creating centralized identity control.',
+        facts: [
+          'It defines verification levels from open access through the Gold Maple Leaf highest-trust status.',
+          'It also emphasizes community validation, minimal data collection, anti-bot protection, and inclusive participation at different trust levels.',
+        ],
+      },
+      {
+        route: '/platform/implementation/digital-governance',
+        title: 'Digital Governance System',
+        summary: 'This page presents a secure and transparent digital governance model for proposals, voting, budget visibility, identity verification, and continuous citizen feedback.',
+        facts: [
+          'It frames digital governance as a response to low participation, declining trust, and expectations for modern public interaction.',
+          'It emphasizes transparency by default, participation at scale, security, integrity, and citizen control.',
+        ],
+      },
+      {
         route: '/platform/immigration',
         title: 'Immigration',
         summary: 'Immigration emphasizes stabilize first, then grow, with levels tied to housing, jobs, infrastructure, and lawful enforcement.',
@@ -574,6 +781,87 @@ export function getCivilAiPageIndex(i18n) {
           'La page presente la gouvernance comme un processus continu et participatif plutot qu un simple moment electoral.',
           'Elle met l accent sur les Chambres de citoyens organisees par district electoral.',
           'Elle insiste aussi sur l identite reelle et la responsabilite.',
+        ],
+      },
+      {
+        route: '/platform/implementation/roadmap',
+        title: 'Feuille de route',
+        summary: 'La feuille de route presente une transition en cinq phases, du lancement de la base a une gouvernance nationale dirigee par les citoyens.',
+        facts: [
+          'La phase 1 couvre la fondation, le lancement de la plateforme Civil, le portefeuille, le cadre des chambres et l integration initiale.',
+          'Les phases suivantes couvrent l activation des districts, le deploiement de la gouvernance, l integration politique et l echelle nationale.',
+        ],
+      },
+      {
+        route: '/platform/implementation/restoring-power-to-citizens',
+        title: 'Redonner le pouvoir aux citoyens dans chaque circonscription',
+        summary: 'Cette page porte sur le transfert du controle politique local de structures fermees vers une participation citoyenne transparente et a grande echelle dans chaque circonscription.',
+        facts: [
+          'Elle identifie la faible participation ADE, le manque de transparence, le controle interne et l engagement limite aux elections comme probleme central.',
+          'Elle propose une participation de masse au niveau local, un controle financier transparent, des propositions ouvertes, une selection par le merite et une responsabilite continue.',
+        ],
+      },
+      {
+        route: '/platform/implementation/chambers-of-citizens',
+        title: 'Chambres de citoyens',
+        summary: 'Les Chambres de citoyens sont presentees comme l infrastructure de district pour la gouvernance locale, la participation, le financement, la coordination et la representation.',
+        facts: [
+          'La page definit trois couches fonctionnelles : Membres, Contributeurs et Coordinateurs.',
+          'Elle explique aussi le fonctionnement des propositions, du vote, du financement par Portefeuille Civil et de l execution dans chaque Chambre.',
+        ],
+      },
+      {
+        route: '/platform/implementation/candidate-selection',
+        title: 'Systeme de selection des candidats',
+        summary: 'Cette page presente un systeme transparent, fonde sur le merite et dirige par la communaute pour identifier, evaluer et selectionner les candidats dans chaque circonscription.',
+        facts: [
+          'Elle rejette les concours de nomination fermes et l influence interne au profit de parcours ouverts et d une evaluation par la contribution.',
+          'Elle comprend des profils transparents, le vote de la communaute, une selection continue et une responsabilite avant l election.',
+        ],
+      },
+      {
+        route: '/platform/implementation/civil-wallet',
+        title: 'Portefeuille Civil et modele de financement',
+        summary: 'Cette page presente le Portefeuille Civil comme un systeme de financement transparent, securise et controle par les citoyens pour la participation et la prise de decision au niveau des Chambres.',
+        facts: [
+          'Elle explique la visibilite des fonds, les propositions publiques de depense, les allocations par vote et un modele a microfrais plafonne a deux dollars pour les transactions plus elevees.',
+          'Elle encadre aussi le portefeuille autour de la securite, de la vie privee, de l interoperabilite et du controle des donnees financieres et de participation par l utilisateur.',
+        ],
+      },
+      {
+        route: '/platform/implementation/member-growth',
+        title: 'Strategie de croissance des membres',
+        summary: 'Cette page presente une strategie pour construire une participation importante, active et durable a l echelle des circonscriptions par la pertinence locale, l utilite quotidienne et l engagement continu.',
+        facts: [
+          'Elle met l accent sur une integration sans friction, une participation d abord locale, les effets de reseau, l activation des createurs et des boucles d engagement continu.',
+          'Elle fixe aussi une cible de plus de mille membres actifs par circonscription comme seuil d une gouvernance locale autosuffisante.',
+        ],
+      },
+      {
+        route: '/platform/implementation/mp-accountability',
+        title: 'Systeme de responsabilite des deputes',
+        summary: 'Cette page presente un systeme continu de responsabilite qui garde les deputes visibles, mesurables et directement relies a leur circonscription entre les elections.',
+        facts: [
+          'Elle comprend des boucles de communication, des rapports publics d activite, la retroaction citoyenne, des signaux d appui et l escalade des enjeux dans chaque circonscription.',
+          'Elle presente aussi Civil comme une extension de la responsabilite du Parlement directement vers les citoyens.',
+        ],
+      },
+      {
+        route: '/platform/implementation/trust-safety',
+        title: 'Systeme de verification humaine et de confiance',
+        summary: 'Cette page presente un systeme de confiance et de verification par couches qui protege l integrite de la participation sans creer de controle centralise de l identite.',
+        facts: [
+          'Elle definit des niveaux de verification allant de l acces ouvert jusqu a la Feuille d erable d or comme statut de confiance maximale.',
+          'Elle met aussi l accent sur la validation communautaire, la collecte minimale de donnees, la protection contre les robots et une participation inclusive selon plusieurs niveaux de confiance.',
+        ],
+      },
+      {
+        route: '/platform/implementation/digital-governance',
+        title: 'Systeme de gouvernance numerique',
+        summary: 'Cette page presente un modele de gouvernance numerique sur et transparent pour les propositions, le vote, la visibilite budgetaire, la verification d identite et la retroaction continue des citoyens.',
+        facts: [
+          'Elle presente la gouvernance numerique comme reponse a la faible participation, a la baisse de confiance et aux attentes de modernite publique.',
+          'Elle met l accent sur la transparence par defaut, la participation a grande echelle, la securite, l integrite et le controle citoyen.',
         ],
       },
       {

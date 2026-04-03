@@ -4,6 +4,9 @@ import AndyNormorePage from './pages/AndyNormorePage'
 import AboutPage from './pages/AboutPage'
 import AgricultureFoodPage from './pages/AgricultureFoodPage'
 import BecomeCivilCitizenPage from './pages/BecomeCivilCitizenPage'
+import CivilWalletFundingPage from './pages/CivilWalletFundingPage'
+import CandidateSelectionPage from './pages/CandidateSelectionPage'
+import DigitalGovernancePage from './pages/DigitalGovernancePage'
 import DefenseSovereigntyPage from './pages/DefenseSovereigntyPage'
 import DonatePage from './pages/DonatePage'
 import EnergyInfrastructurePage from './pages/EnergyInfrastructurePage'
@@ -12,17 +15,23 @@ import FoundingPrinciplesPage from './pages/FoundingPrinciplesPage'
 import GovernancePage from './pages/GovernancePage'
 import HomePage from './pages/HomePage'
 import ImmigrationPage from './pages/ImmigrationPage'
+import CivilChambersPage from './pages/CivilChambersPage'
 import HumansInTheSingularityPage from './pages/HumansInTheSingularityPage'
 import LeadershipPage from './pages/LeadershipPage'
+import MemberGrowthPage from './pages/MemberGrowthPage'
+import MpAccountabilityPage from './pages/MpAccountabilityPage'
 import NewsUpdatesPage from './pages/NewsUpdatesPage'
 import PlatformPage from './pages/PlatformPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import RestoringPowerPage from './pages/RestoringPowerPage'
+import RoadmapPage from './pages/RoadmapPage'
 import TechnologyAIPage from './pages/TechnologyAIPage'
 import EconomicPolicyPage from './pages/EconomicPolicyPage'
 import EconomicPolicyDetailPage from './pages/EconomicPolicyDetailPage'
 import SupportPage from './pages/SupportPage'
 import TermsConditionsPage from './pages/TermsConditionsPage'
 import TheSystemPage from './pages/TheSystemPage'
+import TrustSafetyPage from './pages/TrustSafetyPage'
 import NavigationPlaceholderPage from './pages/NavigationPlaceholderPage'
 
 export default function App() {
@@ -48,6 +57,19 @@ export default function App() {
         <Route path="/platform/family-society" element={<FamilySocietyPage />} />
         <Route path="/platform/technology-ai" element={<TechnologyAIPage />} />
         <Route path="/platform/governance" element={<GovernancePage />} />
+        <Route path="/platform/implementation" element={<Navigate to="/platform#platform-implementation" replace />} />
+        <Route path="/platform/implementation/civil-chambers" element={<Navigate to="/platform/implementation/chambers-of-citizens" replace />} />
+        <Route path="/platform/implementation/chambers-of-citizens" element={<CivilChambersPage />} />
+        <Route path="/platform/implementation/candidate-selection" element={<CandidateSelectionPage />} />
+        <Route path="/platform/implementation/civil-wallet" element={<CivilWalletFundingPage />} />
+        <Route path="/platform/implementation/digital-governance" element={<DigitalGovernancePage />} />
+        <Route path="/platform/implementation/member-growth" element={<MemberGrowthPage />} />
+        <Route path="/platform/implementation/mp-accountability" element={<MpAccountabilityPage />} />
+        <Route path="/platform/implementation/technology" element={<Navigate to="/platform#platform-implementation" replace />} />
+        <Route path="/platform/implementation/trust-safety" element={<TrustSafetyPage />} />
+        <Route path="/civil-chambers" element={<Navigate to="/platform/implementation/chambers-of-citizens" replace />} />
+        <Route path="/platform/implementation/roadmap" element={<RoadmapPage />} />
+        <Route path="/platform/implementation/restoring-power-to-citizens" element={<RestoringPowerPage />} />
         <Route path="/platform/immigration" element={<ImmigrationPage />} />
         <Route path="/support-ccc" element={<SupportPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

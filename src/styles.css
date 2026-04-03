@@ -1348,6 +1348,63 @@ img {
   line-height: 1.8;
 }
 
+.platform-page__implementation {
+  margin-top: 2.25rem;
+}
+
+.platform-page__implementation-panel {
+  margin-top: 2rem;
+}
+
+.platform-page__overview-panel {
+  margin-top: 2rem;
+  scroll-margin-top: 7rem;
+}
+
+.platform-page__sections-panel {
+  margin-top: 0;
+}
+
+.platform-page__sections-heading {
+  margin-top: 1.75rem;
+}
+
+.platform-page__sections-grid {
+  margin-top: 0;
+}
+
+.platform-page__sections-card {
+  min-height: 13rem;
+}
+
+.platform-page__implementation-title {
+  margin: 0 0 1.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.platform-page__implementation-grid {
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.platform-page__implementation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 9.5rem;
+  padding: 1.7rem;
+}
+
+.platform-page__implementation-card-title {
+  margin-top: 0.95rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  line-height: 1.12;
+}
+
 .policy-detail {
   width: 100%;
   max-width: var(--site-width);
@@ -1404,6 +1461,7 @@ img {
 
 .founding-principles-page__section {
   margin-top: 2rem;
+  scroll-margin-top: 7rem;
 }
 
 .founding-principles-page__grid {

@@ -212,6 +212,106 @@ const platformGroupsBase = [
     ],
   },
   {
+    title: { en: 'Implementation', fr: 'Mise en oeuvre' },
+    path: '/platform#platform-implementation',
+    summary: {
+      en: 'How CCC intends to build the civic system itself, from district infrastructure to execution and public trust.',
+      fr: 'Comment le CCC compte construire le systeme civique lui-meme, de l infrastructure locale a l execution et a la confiance publique.',
+    },
+    items: [
+      {
+        label: { en: 'Restoring Power to Citizens', fr: 'Redonner le pouvoir aux citoyens' },
+        path: '/platform/implementation/restoring-power-to-citizens',
+        summary: {
+          en: 'How political power moves back to the riding level through persistent citizen participation.',
+          fr: 'Comment le pouvoir politique revient au niveau des circonscriptions grace a une participation citoyenne continue.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Chambers of Citizens', fr: 'Chambres de citoyens' },
+        path: '/platform/implementation/chambers-of-citizens',
+        summary: {
+          en: 'District-level civic infrastructure for organizing, decision-making, and durable local coordination.',
+          fr: 'Infrastructure civique de district pour l organisation, la prise de decision et une coordination locale durable.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Digital Governance', fr: 'Gouvernance numerique' },
+        path: '/platform/implementation/digital-governance',
+        summary: {
+          en: 'The digital operating layer for proposals, feedback, decisions, and visible public process.',
+          fr: 'La couche operationnelle numerique pour les propositions, la retroaction, les decisions et un processus public visible.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Candidate Selection', fr: 'Selection des candidats' },
+        path: '/platform/implementation/candidate-selection',
+        summary: {
+          en: 'A selection model that rewards local trust, merit, and ongoing contribution over backroom control.',
+          fr: 'Un modele de selection qui recompense la confiance locale, le merite et la contribution continue plutot que le controle en coulisses.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'MP Accountability', fr: 'Responsabilite des deputes' },
+        path: '/platform/implementation/mp-accountability',
+        summary: {
+          en: 'Systems for visible commitments, measurable follow-through, and citizen-level oversight.',
+          fr: 'Des systemes pour des engagements visibles, un suivi mesurable et une supervision au niveau citoyen.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Civil Wallet', fr: 'Portefeuille Civil' },
+        path: '/platform/implementation/civil-wallet',
+        summary: {
+          en: 'Identity, funding, and contribution infrastructure for members, campaigns, and civic participation.',
+          fr: 'Infrastructure d identite, de financement et de contribution pour les membres, les campagnes et la participation civique.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Member Growth', fr: 'Croissance des membres' },
+        path: '/platform/implementation/member-growth',
+        summary: {
+          en: 'How CCC expands membership density, local leadership, and district activation across Canada.',
+          fr: 'Comment le CCC augmente la densite de membres, le leadership local et l activation des districts partout au Canada.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Trust, Safety, and Verification', fr: 'Confiance, securite et verification' },
+        path: '/platform/implementation/trust-safety',
+        summary: {
+          en: 'Verification, moderation, and abuse-prevention systems that protect legitimacy without killing participation.',
+          fr: 'Des systemes de verification, de moderation et de prevention des abus qui protegent la legitimite sans tuer la participation.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation',
+      },
+      {
+        label: { en: 'Roadmap', fr: 'Feuille de route' },
+        path: '/platform/implementation/roadmap',
+        summary: {
+          en: 'The phased execution path from pilots and district build-out to national operating capacity.',
+          fr: 'Le parcours d execution par phases, des projets pilotes et du deploiement local jusqu a une capacite nationale.',
+        },
+        parentLabel: { en: 'Implementation', fr: 'Mise en oeuvre' },
+        parentPath: '/platform#platform-implementation-title',
+      },
+    ],
+  },
+  {
     title: { en: 'Immigration', fr: 'Immigration' },
     path: '/platform/immigration',
     summary: {
