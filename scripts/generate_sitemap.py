@@ -36,6 +36,7 @@ STATIC_ROUTES = [
     '/platform/implementation/mp-accountability',
     '/platform/implementation/trust-safety',
     '/platform/immigration',
+    '/national-discussions',
     '/platform/technology-ai',
     '/platform/economic-foundation',
     '/support-ccc',

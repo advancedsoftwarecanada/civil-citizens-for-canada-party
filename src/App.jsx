@@ -20,6 +20,7 @@ import HumansInTheSingularityPage from './pages/HumansInTheSingularityPage'
 import LeadershipPage from './pages/LeadershipPage'
 import MemberGrowthPage from './pages/MemberGrowthPage'
 import MpAccountabilityPage from './pages/MpAccountabilityPage'
+import NationalDiscussionsPage from './pages/NationalDiscussionsPage'
 import NewsUpdatesPage from './pages/NewsUpdatesPage'
 import PlatformPage from './pages/PlatformPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
@@ -71,6 +72,7 @@ export default function App() {
         <Route path="/platform/implementation/roadmap" element={<RoadmapPage />} />
         <Route path="/platform/implementation/restoring-power-to-citizens" element={<RestoringPowerPage />} />
         <Route path="/platform/immigration" element={<ImmigrationPage />} />
+        <Route path="/national-discussions" element={<NationalDiscussionsPage />} />
         <Route path="/support-ccc" element={<SupportPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />

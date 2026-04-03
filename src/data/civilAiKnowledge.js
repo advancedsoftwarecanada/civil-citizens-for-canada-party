@@ -219,6 +219,13 @@ const routeMetadataByLanguage = {
         'The route is intended as the public stream for official movement updates.',
       ],
     },
+    '/national-discussions': {
+      keywords: ['national discussions', 'national priorities', 'public discussion', 'alberta independence', 'housing affordability'],
+      extraFacts: [
+        'The page presents National Discussions as a public hub for Canadians to shape national priorities through open community discussion.',
+        'Its current topics include Alberta Independence, Canadian Energy and Oil, Jobs and Economic Growth, Housing Affordability, Election Integrity, High Speed Rail, Strategic Oil Reserve, East Coast Refinery, The Carbon Tax, Tariffs, Political Floor Crossings, Gun Control and Safety, Covid 19 Immunization Shots, and Government Transparency and Freedom of Information.',
+      ],
+    },
   },
   fr: {
     '/': {
@@ -420,6 +427,13 @@ const routeMetadataByLanguage = {
       keywords: ['nouvelles', 'mises a jour', 'annonces', 'progres de campagne'],
       extraFacts: [
         'Cette route est destinee a servir de flux public pour les mises a jour officielles du mouvement.',
+      ],
+    },
+    '/national-discussions': {
+      keywords: ['discussions nationales', 'priorites nationales', 'discussion publique', 'independance de l Alberta', 'abordabilite du logement'],
+      extraFacts: [
+        'La page presente les Discussions nationales comme un carrefour public ou les Canadiens peuvent contribuer aux priorites nationales par des discussions communautaires ouvertes.',
+        'Les sujets actuels comprennent l independance de l Alberta, l energie et le petrole canadiens, les emplois et la croissance economique, l abordabilite du logement, l integrite electorale, le train a grande vitesse, la reserve strategique de petrole, la raffinerie de la cote Est, la taxe sur le carbone, les tarifs douaniers, les changements de parti en cours de mandat, le controle des armes et la securite, les vaccins de vaccination contre la Covid 19 et la transparence gouvernementale avec l acces a l information.',
       ],
     },
   },
@@ -676,6 +690,15 @@ export function getCivilAiPageIndex(i18n) {
         ],
       },
       {
+        route: '/national-discussions',
+        title: 'National Discussions',
+        summary: 'National Discussions is a public hub for shaping national priorities through open and transparent discussion inside Canadian communities.',
+        facts: [
+          'The current discussion topics include Alberta Independence, Canadian Energy and Oil, Jobs and Economic Growth, Housing Affordability, Election Integrity, High Speed Rail, Strategic Oil Reserve, East Coast Refinery, The Carbon Tax, Tariffs, Political Floor Crossings, Gun Control and Safety, Covid 19 Immunization Shots, and Government Transparency and Freedom of Information.',
+          'The page frames discussion as direct civic participation rather than passive commentary.',
+        ],
+      },
+      {
         route: '/news-updates',
         title: 'News & Updates',
         summary: 'News & Updates is the route for public announcements, campaign progress, and published updates.',
@@ -928,6 +951,15 @@ export function getCivilAiPageIndex(i18n) {
         facts: [
           'L application Civil est presentee comme une couche operationnelle et non comme une simple fonctionnalite de site.',
           'Elle relie participation, gouvernance et coordination economique dans un seul systeme.',
+        ],
+      },
+      {
+        route: '/national-discussions',
+        title: 'Discussions nationales',
+        summary: 'Les Discussions nationales forment un carrefour public pour orienter les priorites nationales par des discussions ouvertes et transparentes dans les communautes canadiennes.',
+        facts: [
+          'Les sujets actuels comprennent l independance de l Alberta, l energie et le petrole canadiens, les emplois et la croissance economique, l abordabilite du logement, l integrite electorale, le train a grande vitesse, la reserve strategique de petrole, la raffinerie de la cote Est, la taxe sur le carbone, les tarifs douaniers, les changements de parti en cours de mandat, le controle des armes et la securite, les vaccins de vaccination contre la Covid 19 et la transparence gouvernementale avec l acces a l information.',
+          'La page presente la discussion comme une participation civique directe plutot que comme un simple commentaire passif.',
         ],
       },
       {

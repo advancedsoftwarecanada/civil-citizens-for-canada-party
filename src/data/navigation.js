@@ -476,6 +476,115 @@ export const supportItems = [
   },
 ]
 
+const nationalDiscussionsItems = [
+  {
+    label: 'National Discussions Overview',
+    path: '/national-discussions',
+    summary: 'A national discussion hub for major issues Canadians can examine together through Civil Citizens.',
+    parentLabel: 'National Discussions',
+    parentPath: '/',
+    hideInNav: true,
+  },
+  {
+    label: 'Alberta Independence',
+    path: '/national-discussions/alberta-independence',
+    summary: 'A national discussion topic covering Alberta independence, federal-provincial tensions, and constitutional implications.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Canadian Energy & Oil',
+    path: '/national-discussions/canadian-energy-oil',
+    summary: 'A national discussion topic focused on energy strategy, oil development, affordability, and sovereignty.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Jobs & Economic Growth',
+    path: '/national-discussions/jobs-economic-growth',
+    summary: 'A national discussion topic focused on productivity, employment, wages, entrepreneurship, and long-term economic expansion.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Housing Affordability',
+    path: '/national-discussions/housing-affordability',
+    summary: 'A national discussion topic focused on housing costs, supply, speculation, and practical affordability solutions.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Election Integrity',
+    path: '/national-discussions/election-integrity',
+    summary: 'A national discussion topic focused on election security, transparency, trust, and public confidence in democratic outcomes.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'High Speed Rail',
+    path: '/national-discussions/high-speed-rail',
+    summary: 'A national discussion topic focused on intercity rail, infrastructure investment, mobility, and long-term national development.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Strategic Oil Reserve',
+    path: '/national-discussions/strategic-oil-reserve',
+    summary: 'A national discussion topic focused on emergency energy resilience, supply security, and strategic national reserves.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'East Coast Refinery',
+    path: '/national-discussions/east-coast-refinery',
+    summary: 'A national discussion topic focused on refining capacity, Atlantic energy infrastructure, domestic supply, and regional development.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'The Carbon Tax',
+    path: '/national-discussions/the-carbon-tax',
+    summary: 'A national discussion topic focused on carbon pricing, affordability, industrial impact, and environmental tradeoffs.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Tariffs',
+    path: '/national-discussions/tariffs',
+    summary: 'A national discussion topic focused on tariffs, trade protection, domestic industry, and the cost of imported goods.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Political Floor Crossings',
+    path: '/national-discussions/political-floor-crossings',
+    summary: 'A national discussion topic focused on party switching by elected officials, voter mandate, representation, and democratic legitimacy.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Gun Control & Safety',
+    path: '/national-discussions/gun-control-safety',
+    summary: 'A national discussion topic focused on firearm regulation, public safety, lawful ownership, and enforcement standards.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Covid 19 Immunization Shots',
+    path: '/national-discussions/covid-19-immunization-shots',
+    summary: 'A national discussion topic focused on Covid 19 immunization policy, public health trust, informed consent, and long-term review.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+  {
+    label: 'Government Transparency & Freedom of Information',
+    path: '/national-discussions/government-transparency-freedom-of-information',
+    summary: 'A national discussion topic focused on open government, institutional transparency, and stronger public access to information.',
+    parentLabel: 'National Discussions',
+    parentPath: '/national-discussions',
+  },
+]
+
 export const primaryNavigation = [
   {
     id: 'about',
@@ -498,6 +607,13 @@ export const primaryNavigation = [
       parentPath: '/',
     },
     groups: platformGroups,
+  },
+  {
+    id: 'national-discussions',
+    label: 'National Discussions',
+    type: 'direct',
+    path: '/national-discussions',
+    items: nationalDiscussionsItems,
   },
   {
     id: 'civil',

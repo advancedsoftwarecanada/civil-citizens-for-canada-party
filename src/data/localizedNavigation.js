@@ -621,9 +621,164 @@ const supportItemsBase = [
   },
 ]
 
+const nationalDiscussionsItemsBase = [
+  {
+    label: { en: 'National Discussions Overview', fr: 'Apercu des discussions nationales' },
+    path: '/national-discussions',
+    summary: {
+      en: 'A national discussion hub for major issues Canadians can examine together through Civil Citizens.',
+      fr: 'Un carrefour de discussions nationales sur les grands enjeux que les Canadiens peuvent examiner ensemble dans Civil Citizens.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/',
+    hideInNav: true,
+  },
+  {
+    label: { en: 'Alberta Independence', fr: 'Independance de l Alberta' },
+    path: '/national-discussions/alberta-independence',
+    summary: {
+      en: 'A national discussion topic covering Alberta independence, federal-provincial tensions, and constitutional implications.',
+      fr: 'Un sujet de discussion nationale portant sur l independance de l Alberta, les tensions federales-provinciales et les implications constitutionnelles.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Canadian Energy & Oil', fr: 'Energie et petrole canadiens' },
+    path: '/national-discussions/canadian-energy-oil',
+    summary: {
+      en: 'A national discussion topic focused on energy strategy, oil development, affordability, and sovereignty.',
+      fr: 'Un sujet de discussion nationale axe sur la strategie energetique, le developpement petrolier, l abordabilite et la souverainete.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Jobs & Economic Growth', fr: 'Emplois et croissance economique' },
+    path: '/national-discussions/jobs-economic-growth',
+    summary: {
+      en: 'A national discussion topic focused on productivity, employment, wages, entrepreneurship, and long-term economic expansion.',
+      fr: 'Un sujet de discussion nationale axe sur la productivite, l emploi, les salaires, l entrepreneuriat et l expansion economique a long terme.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Housing Affordability', fr: 'Abordabilite du logement' },
+    path: '/national-discussions/housing-affordability',
+    summary: {
+      en: 'A national discussion topic focused on housing costs, supply, speculation, and practical affordability solutions.',
+      fr: 'Un sujet de discussion nationale axe sur les couts du logement, l offre, la speculation et les solutions concretes d abordabilite.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Election Integrity', fr: 'Integrite electorale' },
+    path: '/national-discussions/election-integrity',
+    summary: {
+      en: 'A national discussion topic focused on election security, transparency, trust, and public confidence in democratic outcomes.',
+      fr: 'Un sujet de discussion nationale axe sur la securite electorale, la transparence, la confiance et la confiance publique envers les resultats democratiques.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'High Speed Rail', fr: 'Train a grande vitesse' },
+    path: '/national-discussions/high-speed-rail',
+    summary: {
+      en: 'A national discussion topic focused on intercity rail, infrastructure investment, mobility, and long-term national development.',
+      fr: 'Un sujet de discussion nationale axe sur le rail interurbain, l investissement en infrastructure, la mobilite et le developpement national a long terme.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Strategic Oil Reserve', fr: 'Reserve strategique de petrole' },
+    path: '/national-discussions/strategic-oil-reserve',
+    summary: {
+      en: 'A national discussion topic focused on emergency energy resilience, supply security, and strategic national reserves.',
+      fr: 'Un sujet de discussion nationale axe sur la resilience energetique d urgence, la securite de l approvisionnement et les reserves strategiques nationales.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'East Coast Refinery', fr: 'Raffinerie de la cote Est' },
+    path: '/national-discussions/east-coast-refinery',
+    summary: {
+      en: 'A national discussion topic focused on refining capacity, Atlantic energy infrastructure, domestic supply, and regional development.',
+      fr: 'Un sujet de discussion nationale axe sur la capacite de raffinage, l infrastructure energetique atlantique, l approvisionnement interieur et le developpement regional.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'The Carbon Tax', fr: 'La taxe sur le carbone' },
+    path: '/national-discussions/the-carbon-tax',
+    summary: {
+      en: 'A national discussion topic focused on carbon pricing, affordability, industrial impact, and environmental tradeoffs.',
+      fr: 'Un sujet de discussion nationale axe sur la tarification du carbone, l abordabilite, l impact industriel et les compromis environnementaux.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Tariffs', fr: 'Tarifs douaniers' },
+    path: '/national-discussions/tariffs',
+    summary: {
+      en: 'A national discussion topic focused on tariffs, trade protection, domestic industry, and the cost of imported goods.',
+      fr: 'Un sujet de discussion nationale axe sur les tarifs douaniers, la protection commerciale, l industrie nationale et le cout des biens importes.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Political Floor Crossings', fr: 'Changements de parti en cours de mandat' },
+    path: '/national-discussions/political-floor-crossings',
+    summary: {
+      en: 'A national discussion topic focused on party switching by elected officials, voter mandate, representation, and democratic legitimacy.',
+      fr: 'Un sujet de discussion nationale axe sur le changement de parti par des elus, le mandat des electeurs, la representation et la legitimite democratique.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Gun Control & Safety', fr: 'Controle des armes et securite' },
+    path: '/national-discussions/gun-control-safety',
+    summary: {
+      en: 'A national discussion topic focused on firearm regulation, public safety, lawful ownership, and enforcement standards.',
+      fr: 'Un sujet de discussion nationale axe sur la reglementation des armes a feu, la securite publique, la possession legale et les normes d application.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Covid 19 Immunization Shots', fr: 'Vaccins de vaccination contre la Covid 19' },
+    path: '/national-discussions/covid-19-immunization-shots',
+    summary: {
+      en: 'A national discussion topic focused on Covid 19 immunization policy, public health trust, informed consent, and long-term review.',
+      fr: 'Un sujet de discussion nationale axe sur la politique de vaccination contre la Covid 19, la confiance en sante publique, le consentement eclaire et l examen a long terme.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+  {
+    label: { en: 'Government Transparency & Freedom of Information', fr: 'Transparence gouvernementale et acces a l information' },
+    path: '/national-discussions/government-transparency-freedom-of-information',
+    summary: {
+      en: 'A national discussion topic focused on open government, institutional transparency, and stronger public access to information.',
+      fr: 'Un sujet de discussion nationale axe sur le gouvernement ouvert, la transparence institutionnelle et un acces public plus fort a l information.',
+    },
+    parentLabel: { en: 'National Discussions', fr: 'Discussions nationales' },
+    parentPath: '/national-discussions',
+  },
+]
+
 const primaryNavigationBase = [
   { id: 'about', label: { en: 'About', fr: 'À propos' }, path: '/about' },
   { id: 'platform', label: { en: 'Platform', fr: 'Plateforme' }, path: '/platform' },
+  { id: 'national-discussions', label: { en: 'National Discussions', fr: 'Discussions nationales' }, path: '/national-discussions' },
   { id: 'civil', label: { en: 'The Civil App', fr: 'L’application Civil' }, path: '/the-civil-app' },
   { id: 'news', label: { en: 'News & Updates', fr: 'Nouvelles et mises à jour' }, path: '/news-updates' },
   { id: 'support', label: { en: 'Support CCC', fr: 'Soutenir le CCC' }, path: '/support-ccc' },
@@ -652,6 +807,10 @@ export function getSupportItems() {
   return supportItemsBase.map(materializeItem)
 }
 
+export function getNationalDiscussionsItems() {
+  return nationalDiscussionsItemsBase.map(materializeItem)
+}
+
 export function getPrimaryNavigation() {
   return primaryNavigationBase.map((item) => ({
     ...item,
@@ -665,6 +824,7 @@ export function getNavigationLookup() {
   const lookupItems = [
     ...getAboutItems(),
     ...getSupportItems(),
+    ...getNationalDiscussionsItems(),
     ...groups,
     ...groups.flatMap((group) => group.items ?? []),
     ...systemItems,
